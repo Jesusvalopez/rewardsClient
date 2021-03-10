@@ -5,6 +5,17 @@ import * as api from "../api";
 export const getCoupons = () => async (dispatch) => {
   try {
     const { data } = await api.fetchCoupons();
+
+    dispatch({ type: FETCH_ALL, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getMyCoupons = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchMyCoupons();
+
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
     console.log(error.message);

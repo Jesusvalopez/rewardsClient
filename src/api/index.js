@@ -1,8 +1,24 @@
-import axios from 'axios'
+import axios from "axios";
 
-const url = 'http://localhost:5000/coupons';
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
-export const fetchCoupons = () => axios.get(url);
-export const createCoupon = (newCoupon) => axios.post(url, newCoupon);
-export const updateCoupon = (id, updatedCoupon) => axios.patch(url + '/' +id, updatedCoupon);
-export const deleteCoupon = (id) => axios.delete(url + '/' +id);
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("profile")) {
+    req.headers.authorization =
+      "Bearer " + JSON.parse(localStorage.getItem("profile")).token;
+  }
+
+  return req;
+});
+
+export const fetchCoupons = () => API.get("/coupons");
+export const fetchMyCoupons = () => API.get("/coupons/my-coupons");
+export const createCoupon = (newCoupon) => API.post("/coupons", newCoupon);
+export const updateCoupon = (id, updatedCoupon) =>
+  API.patch("/coupons/" + id, updatedCoupon);
+export const deleteCoupon = (id) => API.delete("/coupons/" + id);
+
+export const signIn = (formData) => API.post("/user/signin", formData);
+export const signUp = (formData) => API.post("/user/signup", formData);
+export const googleSignUp = (formData) =>
+  API.post("/user/google-signup", formData);

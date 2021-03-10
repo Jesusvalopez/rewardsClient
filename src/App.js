@@ -1,24 +1,36 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import { getCoupons } from './actions/coupons'
-import Coupons from './components/Coupons/Coupons';
-import CouponForm from './components/Coupons/Coupon/CouponForm';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Auth from "./components/Auth/Auth";
+import Home from "./components/Home/Home";
+import Welcome from "./components/Welcome/Welcome";
+import { CSSTransition } from "react-transition-group";
+import "./styles.css";
 
-const App = () => {
-    const [currentId, setCurrentId] = useState(null);
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        dispatch(getCoupons());
-    }, [currentId, dispatch])
+const routes = [
+  { path: "/", name: "Welcome", Component: Welcome },
+  { path: "/auth", name: "Auth", Component: Auth },
+  { path: "/home", name: "Home", Component: Home },
+];
 
-    return(
-        <div>
-            <h1>App</h1>
-            <CouponForm currentId={currentId} setCurrentId={setCurrentId}></CouponForm>
-            <Coupons setCurrentId={setCurrentId}></Coupons>
-        </div>
-    )
-}
+const App = () => (
+  <BrowserRouter>
+    {routes.map(({ path, Component }) => (
+      <Route key={path} exact path={path}>
+        {({ match }) => (
+          <CSSTransition
+            in={match != null}
+            timeout={300}
+            classNames="page"
+            unmountOnExit
+          >
+            <div className="page">
+              <Component />
+            </div>
+          </CSSTransition>
+        )}
+      </Route>
+    ))}
+  </BrowserRouter>
+);
 
 export default App;
