@@ -21,6 +21,10 @@
   @apply rounded overflow-hidden shadow-lg;
 }
 
+.red-badge {
+  @apply inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full;
+}
+
 .page {
   position: absolute;
   left: 0;

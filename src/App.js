@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Auth from "./components/Auth/Auth";
 import Home from "./components/Home/Home";
 import Welcome from "./components/Welcome/Welcome";
+import Coupons from "./components/Coupons/Coupons";
 import { CSSTransition } from "react-transition-group";
 
 import decode from "jwt-decode";
@@ -10,7 +11,6 @@ import decode from "jwt-decode";
 const routes = [
   { path: "/", name: "Welcome", Component: Welcome, is_protected: false },
   { path: "/login", name: "Auth", Component: Auth, is_protected: false },
-  { path: "/home", name: "Home", Component: Home, is_protected: true },
 ];
 
 const checkAuth = () => {
@@ -53,6 +53,16 @@ const App = () => (
         )}
       </Route>
     ))}
+    {checkAuth() ? (
+      <Route exact path="/my-coupons" component={Coupons}></Route>
+    ) : (
+      <Redirect to={{ pathname: "/login" }}></Redirect>
+    )}
+    {checkAuth() ? (
+      <Route exact path="/home" component={Home}></Route>
+    ) : (
+      <Redirect to={{ pathname: "/login" }}></Redirect>
+    )}
   </BrowserRouter>
 );
 
