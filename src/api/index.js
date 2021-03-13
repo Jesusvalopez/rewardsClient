@@ -13,6 +13,7 @@ API.interceptors.request.use((req) => {
 
 export const fetchCoupons = () => API.get("/coupons");
 export const fetchMyCoupons = () => API.get("/coupons/my-coupons");
+export const fetchMyCouponsCount = () => API.get("/coupons/my-coupons-count");
 export const createCoupon = (newCoupon) => API.post("/coupons", newCoupon);
 export const updateCoupon = (id, updatedCoupon) =>
   API.patch("/coupons/" + id, updatedCoupon);
@@ -22,3 +23,5 @@ export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);
 export const googleSignUp = (formData) =>
   API.post("/user/google-signup", formData);
+
+export const fetchMyPoints = () => API.get("/points/my-points");

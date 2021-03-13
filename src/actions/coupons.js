@@ -1,4 +1,10 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE } from "..//constants/actionsTypes";
+import {
+  FETCH_ALL,
+  CREATE,
+  UPDATE,
+  DELETE,
+  FETCH_COUPONS_COUNT,
+} from "..//constants/actionsTypes";
 import * as api from "../api";
 
 //Actions creators
@@ -12,10 +18,19 @@ export const getCoupons = () => async (dispatch) => {
   }
 };
 
+export const getMyCouponsCount = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchMyCouponsCount();
+    console.log(data);
+    dispatch({ type: FETCH_COUPONS_COUNT, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 export const getMyCoupons = () => async (dispatch) => {
   try {
     const { data } = await api.fetchMyCoupons();
-
+    //console.log(data);
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
     console.log(error.message);

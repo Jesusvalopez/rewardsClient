@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import { numberToMoney } from "../../../helpers/formats";
 
 const Coupon = ({ coupon }) => {
   return (
@@ -8,7 +9,9 @@ const Coupon = ({ coupon }) => {
         <div className="flex">
           <div className="w-1/12 bg-gradient-to-r from-gray-800 to-gray-900 -m-5 rounded-l-md"></div>
           <div className="flex-1 pl-10">
-            <div className="text-white font-bold text-3xl">{coupon.value}</div>
+            <div className="text-white font-bold text-3xl">
+              {coupon.value ? numberToMoney(coupon.value) : coupon.type}
+            </div>
             <div className="font-bold">
               Válido hasta el {moment(coupon.expireDate).format("DD/MM/YYYY")}
             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import profilePicture from "../../assets/img/team-2-800x800.jpg";
 
@@ -8,6 +8,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const coupons_count = useSelector((state) => state.couponsCount);
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -46,7 +47,7 @@ const Sidebar = () => {
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
         <p>
           <Link to="/my-coupons">
-            Cupones <span className="red-badge">1</span>
+            Cupones <span className="red-badge">{coupons_count}</span>
           </Link>
         </p>
       </div>

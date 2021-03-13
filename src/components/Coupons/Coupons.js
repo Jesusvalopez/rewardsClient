@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Coupon from "./Coupon/Coupon";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Navbar/Sidebar";
-
+import { getCoupons, getMyCoupons } from "../../actions/coupons";
+import { useDispatch } from "react-redux";
 const Coupons = ({ setCurrentId }) => {
   const coupons = useSelector((state) => state.coupons);
+  const dispatch = useDispatch();
 
-  console.log(coupons);
+  useEffect(() => {
+    dispatch(getMyCoupons());
+    // dispatch(getMyPoints());
+  }, [dispatch]);
 
   return (
     <>
@@ -25,13 +30,27 @@ const Coupons = ({ setCurrentId }) => {
               <div className=" border-t border-gray-300"></div>
               <div className=" border-t border-gray-300"></div>
               <div className="grid md:grid-cols-2 m-5">
-                {coupons.map((coupon) => (
-                  <Coupon coupon={coupon}></Coupon>
-                ))}
+                <div className="col-span-2 text-center text-xl font-bold mb-2">
+                  ¿Cómo usar?
+                </div>
+                <div className="text-center text-sm font-medium text-gray-500 px-20 mb-4">
+                  <p className="font-bold text-black">En nuestro local:</p>
+                  Indícanos tu correo electrónico durante la compra y el cupón
+                  se aplicará automaticamente.
+                </div>
+                <div className="text-center text-sm font-medium text-gray-500 px-20 mb-4">
+                  <p className="font-bold text-black">En nuestra web:</p>
+                  Ingresa el código del cupón en el campo 'cupón' al momento de
+                  hacer checkout.
+                </div>
+                {coupons.length > 0
+                  ? coupons.map((coupon) => (
+                      <Coupon key={coupon._id} coupon={coupon}></Coupon>
+                    ))
+                  : null}
               </div>
             </div>
           </div>
-          <p> Tipos de cupones: dinero y envíos gratis</p>
         </section>
       </main>
     </>
