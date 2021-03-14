@@ -4,5 +4,12 @@ import coupons from "./coupons";
 import auth from "./auth";
 import points from "./points";
 import couponsCount from "./couponsCount";
+import exchangeCoupons from "./exchangeCoupons";
 
-export default combineReducers({ coupons, auth, points, couponsCount });
+export default combineReducers({
+  coupons,
+  auth,
+  points,
+  couponsCount,
+  exchangeCoupons,
+});

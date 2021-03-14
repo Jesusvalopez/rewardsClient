@@ -4,8 +4,12 @@ import {
   UPDATE,
   DELETE,
   FETCH_COUPONS_COUNT,
+  FETCH_EXCHANGE_COUPONS,
+  UPDATE_TOTAL_POINTS,
+  FETCH_ALL_POINTS_TOP,
 } from "..//constants/actionsTypes";
 import * as api from "../api";
+import { getMyPoints } from "./points";
 
 //Actions creators
 export const getCoupons = () => async (dispatch) => {
@@ -15,6 +19,30 @@ export const getCoupons = () => async (dispatch) => {
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
     console.log(error.message);
+  }
+};
+
+export const getExchangeCoupons = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchExchangeCoupons();
+    console.log(data);
+    dispatch({ type: FETCH_EXCHANGE_COUPONS, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const exchangeCoupon = (exchangeCoupon) => async (dispatch) => {
+  try {
+    const { data } = await api.exchangeCoupon(exchangeCoupon);
+    console.log(data);
+    dispatch({ type: UPDATE_TOTAL_POINTS, payload: data });
+    dispatch(getMyCouponsCount());
+    dispatch(getMyPoints());
+    //dispatch({ type: FETCH_ALL_POINTS_TOP, payload: data });
+  } catch (error) {
+    console.log(error);
+    alert(error.response.data.message);
   }
 };
 

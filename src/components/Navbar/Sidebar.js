@@ -17,7 +17,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-2/3 relative flex flex-col min-w-0 break-words bg-white w-1/3 mb-6 shadow-xl rounded-lg mt-0 m-5">
+    <div className="h-2/3 relative flex flex-col min-w-0 break-words bg-white lg:w-1/3 mb-6 shadow-xl rounded-lg mt-0 m-5">
       <div className="flex ">
         <div className="flex-1">
           <div className="">

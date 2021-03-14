@@ -12,8 +12,12 @@ const Coupon = ({ coupon }) => {
             <div className="text-white font-bold text-3xl">
               {coupon.value ? numberToMoney(coupon.value) : coupon.type}
             </div>
+
             <div className="font-bold">
               Válido hasta el {moment(coupon.expireDate).format("DD/MM/YYYY")}
+            </div>
+            <div className="text-sm font-thin ">
+              Compra mínima de {numberToMoney(coupon.minAmount)}
             </div>
           </div>
         </div>

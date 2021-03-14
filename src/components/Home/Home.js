@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import decode from "jwt-decode";
 
@@ -10,14 +10,16 @@ import { getMyPoints } from "../../actions/points";
 import PointsHistory from "../Points/PointsHistory";
 import { formatedNumber } from "../../helpers/formats";
 import { getMyCouponsCount } from "../../actions/coupons";
+import { getExchangeCoupons } from "../../actions/coupons";
+import PointsExchange from "../Points/PointsExchange";
 
 const Home = () => {
-  const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const history = useHistory();
-
-  useEffect(() => {
+  const pointsTotal = useSelector((state) => state.points.pointsTotal);
+  {
+    /*useEffect(() => {
     const token = user?.token;
 
     if (token) {
@@ -29,11 +31,14 @@ const Home = () => {
 
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, []);
+*/
+  }
 
   useEffect(() => {
-    dispatch(getMyCouponsCount());
-    dispatch(getMyPoints());
-  }, [currentId, dispatch]);
+    // dispatch(getMyCouponsCount());
+    dispatch(getMyPoints(0));
+    dispatch(getExchangeCoupons());
+  }, []);
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -45,16 +50,17 @@ const Home = () => {
     <>
       <Navbar transparent />
       <main className="profile-page">
-        <section className="h-screen py-16 bg-gray-100">
-          <div className="container mx-auto px-4 flex">
+        <section className="h-auto py-16 bg-gray-100">
+          <div className="container mx-auto px-4 flex flex-col lg:flex-row">
             <Sidebar></Sidebar>
+            {/* Componente central de puntos*/}
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-0">
               <div className="px-6">
                 <div className="flex justify-center pt-5">
                   <div className="w-full lg:w-full bg-gradient-to-r from-sticksyellow to-yellow-500 p-5 rounded-md text-center">
                     <p className="text-white font-bold text-xl">Tus puntos</p>
                     <p className="text-white text-4xl font-bold">
-                      {formatedNumber(user.result?.points)}
+                      {formatedNumber(pointsTotal)}
                     </p>
                   </div>
                 </div>
@@ -78,13 +84,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            <PointsExchange></PointsExchange>
           </div>
-          <p>
-            {" "}
-            Con los puntos puedes canjear tokens. Ejemplo cada 1000 pesos genera
-            10 ptos, serían 100 ptos para canjear un token. Los puntos también
-            te permiten canjear cupones. 500 ptos te dejan canjear un cupon.
-          </p>
         </section>
       </main>
     </>

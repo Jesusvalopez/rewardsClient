@@ -14,6 +14,9 @@ API.interceptors.request.use((req) => {
 export const fetchCoupons = () => API.get("/coupons");
 export const fetchMyCoupons = () => API.get("/coupons/my-coupons");
 export const fetchMyCouponsCount = () => API.get("/coupons/my-coupons-count");
+export const fetchExchangeCoupons = () => API.get("/coupons/exchange-coupons");
+export const exchangeCoupon = (exchangeCoupon) =>
+  API.post("/coupons/exchange-coupons", exchangeCoupon);
 export const createCoupon = (newCoupon) => API.post("/coupons", newCoupon);
 export const updateCoupon = (id, updatedCoupon) =>
   API.patch("/coupons/" + id, updatedCoupon);
@@ -24,4 +27,5 @@ export const signUp = (formData) => API.post("/user/signup", formData);
 export const googleSignUp = (formData) =>
   API.post("/user/google-signup", formData);
 
-export const fetchMyPoints = () => API.get("/points/my-points");
+export const fetchMyPoints = (page) =>
+  API.get("/points/my-points?page=" + page);
