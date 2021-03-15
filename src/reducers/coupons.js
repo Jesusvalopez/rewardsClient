@@ -11,9 +11,6 @@ export default (coupons = [], action) => {
     case FETCH_ALL:
       return action.payload;
       break;
-    case FETCH_COUPONS_COUNT:
-      return action.payload;
-      break;
     case CREATE:
       return [...coupons, action.payload];
       break;

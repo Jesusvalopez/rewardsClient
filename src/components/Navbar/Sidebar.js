@@ -23,7 +23,7 @@ const Sidebar = () => {
           <div className="">
             <img
               alt="..."
-              src={profilePicture}
+              src={user?.result.profilePictureUrl}
               className="w-4/5 shadow-md rounded-full h-auto align-middle border-none m-auto mt-4"
               style={{ maxWidth: "150px" }}
             />

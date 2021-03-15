@@ -50,7 +50,7 @@ const Home = () => {
     <>
       <Navbar transparent />
       <main className="profile-page">
-        <section className="h-auto py-16 bg-gray-100">
+        <section className="h-screen py-16 bg-gray-100">
           <div className="container mx-auto px-4 flex flex-col lg:flex-row">
             <Sidebar></Sidebar>
             {/* Componente central de puntos*/}
