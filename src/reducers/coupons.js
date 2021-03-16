@@ -4,23 +4,45 @@ import {
   UPDATE,
   DELETE,
   FETCH_COUPONS_COUNT,
+  FETCH_ALL_COUPONS_USED,
+  FETCH_ALL_COUPONS_EXPIRED,
 } from "..//constants/actionsTypes";
 
-export default (coupons = [], action) => {
+const initialState = {
+  activeCoupons: null,
+  usedCoupons: null,
+  expiredCoupons: null,
+};
+
+export default (coupons = initialState, action) => {
   switch (action.type) {
     case FETCH_ALL:
-      return action.payload;
+      return { ...coupons, activeCoupons: action.payload };
+      break;
+    case FETCH_ALL_COUPONS_USED:
+      return { ...coupons, usedCoupons: action.payload };
+      break;
+    case FETCH_ALL_COUPONS_EXPIRED:
+      return { ...coupons, expiredCoupons: action.payload };
       break;
     case CREATE:
-      return [...coupons, action.payload];
+      return { ...coupons, activeCoupons: action.payload };
       break;
     case UPDATE:
-      return coupons.map((coupon) =>
-        coupon._id === action.payload._id ? action.payload : coupon
-      );
+      return {
+        ...coupons,
+        activeCoupons: coupons.map((coupon) =>
+          coupon._id === action.payload._id ? action.payload : coupon
+        ),
+      };
       break;
     case DELETE:
-      return coupons.filter((coupon) => coupon._id !== action.payload);
+      return {
+        ...coupons,
+        activeCoupons: coupons.filter(
+          (coupon) => coupon._id !== action.payload
+        ),
+      };
       break;
     default:
       return coupons;

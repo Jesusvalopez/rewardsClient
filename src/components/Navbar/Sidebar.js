@@ -17,7 +17,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-2/3 relative flex flex-col min-w-0 break-words bg-white lg:w-1/3 mb-6 shadow-xl rounded-lg mt-0 m-5">
+    <div className="h-2/3 relative flex flex-col min-w-0 break-words bg-white xl:w-1/2 mb-6 shadow-xl rounded-lg mt-0 m-5">
       <div className="flex ">
         <div className="flex-1">
           <div className="">
@@ -49,11 +49,6 @@ const Sidebar = () => {
           <Link to="/my-coupons">
             Cupones <span className="red-badge">{coupons_count}</span>
           </Link>
-        </p>
-      </div>
-      <div className="mt-2 py-3 border-t border-gray-300 px-4">
-        <p>
-          Tokens <span className="red-badge">2</span>
         </p>
       </div>
       <div className="mt-2 py-3 border-t border-gray-300 px-4">

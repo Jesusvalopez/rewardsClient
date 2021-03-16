@@ -32,7 +32,7 @@ const PointsExchange = () => {
 
   return (
     <>
-      <div className="h-2/3 relative flex flex-col min-w-0 break-words bg-white lg:w-3/5 mb-6 shadow-xl rounded-lg mt-0 m-5">
+      <div className="h-2/3 relative flex flex-col min-w-0 break-words bg-white xl:w-3/5 mb-6 shadow-xl rounded-lg mt-0 m-5">
         <div className="mt-4 mb-2 mx-4 text-lg font-bold">Canjear puntos</div>
         <div className="mt-2 py-3 border-t border-gray-300 px-4">
           {exchangeCoupons.length > 0

@@ -30,6 +30,7 @@ const PointsHistory = () => {
         next={fetchMoreData}
         hasMore={hasMore}
         loader={""}
+        height={400}
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all</b>
@@ -40,7 +41,7 @@ const PointsHistory = () => {
           ? points.map((point) => (
               <div
                 key={point._id}
-                className="flex justify-center px-5 py-2 border-b border-gray-300"
+                className="flex justify-center px-5 py-2 border-b border-gray-300 "
               >
                 <div
                   className={

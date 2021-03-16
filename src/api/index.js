@@ -12,7 +12,8 @@ API.interceptors.request.use((req) => {
 });
 
 export const fetchCoupons = () => API.get("/coupons");
-export const fetchMyCoupons = () => API.get("/coupons/my-coupons");
+export const fetchMyCoupons = (state) =>
+  API.get("/coupons/my-coupons/" + state);
 export const fetchMyCouponsCount = () => API.get("/coupons/my-coupons-count");
 export const fetchExchangeCoupons = () => API.get("/coupons/exchange-coupons");
 export const exchangeCoupon = (exchangeCoupon) =>

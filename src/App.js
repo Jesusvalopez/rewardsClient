@@ -20,7 +20,7 @@ const App = () => {
 
   const checkAuth = () => {
     const token = JSON.parse(localStorage.getItem("profile"))?.token;
-    console.log(token);
+
     if (!token) {
       return false;
     }

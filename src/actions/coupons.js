@@ -7,6 +7,8 @@ import {
   FETCH_EXCHANGE_COUPONS,
   UPDATE_TOTAL_POINTS,
   FETCH_ALL_POINTS_TOP,
+  FETCH_ALL_COUPONS_USED,
+  FETCH_ALL_COUPONS_EXPIRED,
 } from "..//constants/actionsTypes";
 import * as api from "../api";
 import { getMyPoints } from "./points";
@@ -55,11 +57,25 @@ export const getMyCouponsCount = () => async (dispatch) => {
     console.log(error.message);
   }
 };
-export const getMyCoupons = () => async (dispatch) => {
+export const getMyCoupons = (state) => async (dispatch) => {
   try {
-    const { data } = await api.fetchMyCoupons();
+    const { data } = await api.fetchMyCoupons(state);
     //console.log(data);
-    dispatch({ type: FETCH_ALL, payload: data });
+
+    switch (state) {
+      case "active": {
+        dispatch({ type: FETCH_ALL, payload: data });
+        break;
+      }
+      case "used": {
+        dispatch({ type: FETCH_ALL_COUPONS_USED, payload: data });
+        break;
+      }
+      case "expired": {
+        dispatch({ type: FETCH_ALL_COUPONS_EXPIRED, payload: data });
+        break;
+      }
+    }
   } catch (error) {
     console.log(error.message);
   }
