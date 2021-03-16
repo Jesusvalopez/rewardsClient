@@ -10,8 +10,8 @@ const Welcome = () => {
             Bienvenido a las STICKS recompensas
           </p>
           <p className="text-3xl pt-5 font-roboto">
-            Porque comer rico tiene que ser una experiencia, descubre los
-            descuentos y beneficios por cada compra.
+            Porque comer rico tiene que ser una experiencia completa, descubre
+            los descuentos y beneficios por cada compra.
           </p>
 
           <div className="pt-5">
