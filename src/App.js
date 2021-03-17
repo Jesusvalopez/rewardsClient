@@ -14,11 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 const App = () => {
   const authData = useSelector((state) => state.auth.authData);
 
-  const routes = [
-    { path: "/", name: "Welcome", Component: Welcome, is_protected: false },
-    { path: "/login", name: "Auth", Component: Auth, is_protected: false },
-  ];
-
   const checkAuth = () => {
     const token = JSON.parse(localStorage.getItem("profile"))?.token;
 
@@ -46,26 +41,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {routes.map(({ path, Component, is_protected }) => (
-          <Route key={path} exact path={path}>
-            {({ match }) => (
-              <CSSTransition
-                in={match != null}
-                timeout={300}
-                classNames="page"
-                unmountOnExit
-              >
-                {!is_protected || checkAuth() ? (
-                  <div className="page">
-                    <Component />
-                  </div>
-                ) : (
-                  <Redirect to={{ pathname: "/login" }}></Redirect>
-                )}
-              </CSSTransition>
-            )}
-          </Route>
-        ))}
+        <Route exact path="/" component={Welcome}></Route>
+        <Route exact path="/login" component={Auth}></Route>
         {checkAuth() ? (
           <Route exact path="/my-coupons" component={Coupons}></Route>
         ) : (

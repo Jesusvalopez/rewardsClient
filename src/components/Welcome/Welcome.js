@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import human from "../../images/humans.png";
+
 const Welcome = () => {
   return (
     <div className="container mx-5 mt-10 lg:mt-40 ">

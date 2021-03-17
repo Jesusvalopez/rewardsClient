@@ -1,4 +1,4 @@
-import { AUTH, LOGOUT } from "../constants/actionsTypes";
+import { AUTH, LOGIN_IN } from "../constants/actionsTypes";
 import * as api from "../api";
 
 export const SignIn = (formData, history) => async (dispatch) => {
@@ -32,6 +32,7 @@ export const GoogleSignUp = (formData, history) => async (dispatch) => {
     const { data } = await api.googleSignUp(formData);
 
     dispatch({ type: AUTH, data });
+    dispatch({ type: LOGIN_IN, payload: false });
     history.push("/home");
   } catch (error) {
     console.log(error);

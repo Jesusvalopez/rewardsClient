@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { GoogleLogin } from "react-google-login";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SignIn, SignUp, GoogleSignUp } from "../../actions/auth";
 import Logo from "../../images/Logo-Sticks.png";
+import { LOGIN_IN } from "../../constants/actionsTypes";
+import ReactLoading from "react-loading";
 const initialState = {
   firstName: "",
   lastName: "",
@@ -17,7 +19,7 @@ const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initialState);
-
+  const loginIn = useSelector((state) => state.loginIn);
   const history = useHistory();
 
   const handleSubmit = (e) => {
@@ -44,9 +46,8 @@ const Auth = () => {
 
     const form = { profile: result, token: token };
 
-    console.log(result);
-
     try {
+      dispatch({ type: LOGIN_IN, payload: true });
       dispatch(GoogleSignUp(form, history));
     } catch (error) {
       console.log(error);
@@ -60,6 +61,18 @@ const Auth = () => {
 
   return (
     <div className="">
+      {loginIn ? (
+        <div className="fixed h-full w-full flex flex-col items-center justify-center bg-opacity-50 bg-gray-700">
+          <ReactLoading
+            type="spin"
+            color="rgba(247, 198, 0)"
+            height={"10%"}
+            width={"80px"}
+          />
+          <div className="mt-5 text-white">Iniciando sesión...</div>
+        </div>
+      ) : null}
+
       <form action="#" onSubmit={handleSubmit}>
         <div className="h-screen flex justify-center items-center bg-gray-100 flex-col ">
           <div className="w-40 lg:w-56 pb-10" onClick={() => history.push("/")}>
