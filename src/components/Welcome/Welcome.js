@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import human from "../../images/humans.png";
 const Welcome = () => {
   return (
-    <div className="container mx-auto mt-40">
-      <div className="grid grid-cols-2">
+    <div className="container mx-5 mt-10 lg:mt-40 ">
+      <div className="grid lg:grid-cols-2">
         <div>
-          <p className="text-9xl text-sticksyellow pr-20 font-bangers">
+          <p className="text-5xl lg:text-9xl text-sticksyellow pr-20 font-bangers">
             Bienvenido a las STICKS recompensas
           </p>
           <p className="text-3xl pt-5 font-roboto">

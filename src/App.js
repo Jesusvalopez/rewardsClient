@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Auth from "./components/Auth/Auth";
 import Home from "./components/Home/Home";
 import Welcome from "./components/Welcome/Welcome";
+import PrivacyPolicy from "./components/Welcome/PrivacyPolicy";
 import Coupons from "./components/Coupons/Coupons";
 import { CSSTransition } from "react-transition-group";
 import { getMyCouponsCount } from "./actions/coupons";
@@ -75,6 +76,11 @@ const App = () => {
         ) : (
           <Redirect to={{ pathname: "/login" }}></Redirect>
         )}
+        <Route
+          exact
+          path="/politica-privacidad"
+          component={PrivacyPolicy}
+        ></Route>
       </Switch>
     </BrowserRouter>
   );
