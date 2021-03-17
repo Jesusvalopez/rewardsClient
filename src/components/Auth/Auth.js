@@ -79,10 +79,29 @@ const Auth = () => {
             <img src={Logo} alt="" />
           </div>
 
-          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8  flex flex-col w-11/12 lg:w-2/5 ">
-            <p className="text-center text-2xl pb-10">
-              {isSignUp ? "Registro" : "Iniciar sesión"}
-            </p>
+          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8  flex flex-col w-11/12 lg:w-1/3 ">
+            <div className="">
+              {!isSignUp && (
+                <div className="text-center">
+                  <p className="text-center text-2xl pb-5">
+                    Ingresa a tu cuenta
+                  </p>
+                  <GoogleLogin
+                    className="text-center"
+                    clientId="104027593023-skbtgi9mot6e86as2alipag0hmfmchm1.apps.googleusercontent.com"
+                    onSuccess={googleSuccess}
+                    onFailure={googleFailure}
+                    cookiePolicy="single_host_origin"
+                    buttonText="Iniciar sesión con Google"
+                  ></GoogleLogin>
+                  <div class="flex justify-between items-center mt-3">
+                    <hr class="w-full" /> <span class="p-2 mb-1">O</span>
+                    <hr class="w-full" />
+                  </div>
+                </div>
+              )}
+            </div>
+
             {isSignUp && (
               <div className="mb-4 grid grid-cols-2 gap-4 mt-10">
                 <div>
@@ -167,7 +186,7 @@ const Auth = () => {
                 />
               </div>
             )}
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center justify-between mt-4 flex-col md:flex-row">
               <button
                 className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
                 type="submit"
@@ -176,16 +195,16 @@ const Auth = () => {
               </button>
               {!isSignUp && (
                 <a
-                  className="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker"
+                  className="my-2 md:my-0 font-bold text-sm text-blue hover:text-blue-darker"
                   href="#"
                 >
                   Olvidé mi contraseña
                 </a>
               )}
             </div>
-            <div className="">
+            <div className="text-center ">
               <a
-                className="float-right align-baseline font-bold text-sm text-blue hover:text-blue-darker"
+                className="my-2 md:my-0 md:float-right font-bold text-sm text-blue hover:text-blue-darker"
                 href="#"
                 onClick={() => setIsSignUp(!isSignUp)}
               >
@@ -193,19 +212,6 @@ const Auth = () => {
                   ? "Ya tienes una cuenta?  Inicia Sesión"
                   : "No tienes una cuenta? Regístrate"}
               </a>
-            </div>
-            <div className="flex items-center justify-between">
-              {!isSignUp && (
-                <div>
-                  <GoogleLogin
-                    clientId="104027593023-skbtgi9mot6e86as2alipag0hmfmchm1.apps.googleusercontent.com"
-                    onSuccess={googleSuccess}
-                    onFailure={googleFailure}
-                    cookiePolicy="single_host_origin"
-                    buttonText="Continuar con Google"
-                  ></GoogleLogin>
-                </div>
-              )}
             </div>
           </div>
         </div>
