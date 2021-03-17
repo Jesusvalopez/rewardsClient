@@ -62,11 +62,11 @@ const Auth = () => {
     <div className="">
       <form action="#" onSubmit={handleSubmit}>
         <div className="h-screen flex justify-center items-center bg-gray-100 flex-col ">
-          <div className="w-56 pb-10" onClick={() => history.push("/")}>
+          <div className="w-40 lg:w-56 pb-10" onClick={() => history.push("/")}>
             <img src={Logo} alt="" />
           </div>
 
-          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-4/5 lg:w-2/5 ">
+          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8  flex flex-col w-11/12 lg:w-2/5 ">
             <p className="text-center text-2xl pb-10">
               {isSignUp ? "Registro" : "Iniciar sesión"}
             </p>
