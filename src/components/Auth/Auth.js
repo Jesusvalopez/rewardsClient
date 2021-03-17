@@ -74,7 +74,7 @@ const Auth = () => {
       ) : null}
 
       <form action="#" onSubmit={handleSubmit}>
-        <div className="h-screen flex justify-center items-center bg-gray-100 flex-col ">
+        <div className="h-screen flex justify-center items-center flex-col ">
           <div className="w-40 lg:w-56 pb-10" onClick={() => history.push("/")}>
             <img src={Logo} alt="" />
           </div>

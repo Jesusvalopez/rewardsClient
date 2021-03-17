@@ -48,7 +48,7 @@ const Coupons = () => {
     <>
       <Navbar transparent />
       <main className="profile-page">
-        <section className="h-screen relative py-16 bg-gray-100">
+        <section className="h-screen relative py-16 ">
           <div className="container mx-auto px-4 flex flex-col xl:flex-row">
             <Sidebar />
             <div className="relative flex flex-col break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-0 px-6">
