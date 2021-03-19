@@ -10,6 +10,7 @@ const Coupon = ({ coupon }) => {
           <div className="w-1/12 bg-gradient-to-r from-gray-800 to-gray-900 -m-5 rounded-l-md"></div>
           <div className="flex-1 pl-10">
             <div className="text-white font-bold text-3xl">
+              {coupon.code ? coupon.code : ""}{" "}
               {coupon.value ? numberToMoney(coupon.value) : coupon.type}
             </div>
 

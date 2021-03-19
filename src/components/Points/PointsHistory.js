@@ -5,6 +5,15 @@ import { formatedValue } from "../../helpers/formats";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch } from "react-redux";
 import { getMyPoints } from "../../actions/points";
+import ContentLoader from "react-content-loader";
+
+const PointsHistoryLoader = () => (
+  <ContentLoader width={"100%"} height={200}>
+    <rect x="1%" y="1%" rx="5" ry="5" width="100%" height="30%" />
+    <rect x="1%" y="35%" rx="5" ry="5" width="100%" height="30%" />
+    <rect x="1%" y="70%" rx="5" ry="5" width="100%" height="30%" />
+  </ContentLoader>
+);
 const PointsHistory = () => {
   const points = useSelector((state) => state.points.points);
   const pointsTotal = useSelector((state) => state.points.pointsTotal);
@@ -37,30 +46,30 @@ const PointsHistory = () => {
           </p>
         }
       >
-        {points.length > 0
-          ? points.map((point) => (
+        {points.length > 0 ? (
+          points.map((point) => (
+            <div
+              key={point._id}
+              className="flex justify-center md:px-5 py-2 border-b border-gray-300 "
+            >
               <div
-                key={point._id}
-                className="flex justify-center md:px-5 py-2 border-b border-gray-300 "
+                className={
+                  point.value > 0
+                    ? "text-green-500 m-2  font-bold w-20"
+                    : "text-red-500 m-2  font-bold w-20"
+                }
               >
-                <div
-                  className={
-                    point.value > 0
-                      ? "text-green-500 m-2  font-bold w-20"
-                      : "text-red-500 m-2  font-bold w-20"
-                  }
-                >
-                  {formatedValue(point.value)}
-                </div>
-                <div className="flex-1 md:m-2 font-bold">
-                  {point.description}
-                </div>
-                <div className="md:m-2">
-                  {moment(point.createdAt).format("DD/MM/YYYY")}
-                </div>
+                {formatedValue(point.value)}
               </div>
-            ))
-          : null}
+              <div className="flex-1 md:m-2 font-bold">{point.description}</div>
+              <div className="md:m-2">
+                {moment(point.createdAt).format("DD/MM/YYYY")}
+              </div>
+            </div>
+          ))
+        ) : (
+          <PointsHistoryLoader></PointsHistoryLoader>
+        )}
       </InfiniteScroll>
     </>
   );

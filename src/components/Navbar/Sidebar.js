@@ -36,9 +36,7 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-      <div className="mt-2 py-3 border-t border-gray-300 px-4">
-        <p>Ajustes</p>
-      </div>
+
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
         <p>
           <Link to="/home">Puntos</Link>

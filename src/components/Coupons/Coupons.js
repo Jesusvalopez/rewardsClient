@@ -93,7 +93,7 @@ const Coupons = () => {
                         usedCoupons.map((coupon) => (
                           <Coupon key={coupon._id} coupon={coupon}></Coupon>
                         ))
-                      ) : coupons.length == 0 ? (
+                      ) : usedCoupons.length == 0 ? (
                         <div className="text-center col-span-2 mt-10 text-xl text-gray-500">
                           No tienes cupones usados
                         </div>
