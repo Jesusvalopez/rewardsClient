@@ -41,6 +41,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route
+          exact
+          path="/politica-privacidad"
+          component={PrivacyPolicy}
+        ></Route>
         <Route exact path="/" component={Welcome}></Route>
         <Route exact path="/login" component={Auth}></Route>
         {checkAuth() ? (
@@ -53,11 +58,6 @@ const App = () => {
         ) : (
           <Redirect to={{ pathname: "/login" }}></Redirect>
         )}
-        <Route
-          exact
-          path="/politica-privacidad"
-          component={PrivacyPolicy}
-        ></Route>
       </Switch>
     </BrowserRouter>
   );

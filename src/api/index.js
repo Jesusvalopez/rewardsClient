@@ -30,6 +30,8 @@ export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);
 export const googleSignUp = (formData) =>
   API.post("/user/google-signup", formData);
+export const facebookSignUp = (formData) =>
+  API.post("/user/facebook-signup", formData);
 
 export const fetchMyPoints = (page) =>
   API.get("/points/my-points?page=" + page);

@@ -26,6 +26,18 @@ export const SignUp = (formData, history) => async (dispatch) => {
   }
 };
 
+export const FacebookSignUp = (formData, history) => async (dispatch) => {
+  try {
+    // register
+    const { data } = await api.facebookSignUp(formData);
+
+    dispatch({ type: AUTH, data });
+    dispatch({ type: LOGIN_IN, payload: false });
+    history.push("/home");
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const GoogleSignUp = (formData, history) => async (dispatch) => {
   try {
     // register

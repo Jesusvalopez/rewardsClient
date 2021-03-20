@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { SignIn, SignUp, GoogleSignUp } from "../../actions/auth";
+import {
+  SignIn,
+  SignUp,
+  GoogleSignUp,
+  FacebookSignUp,
+} from "../../actions/auth";
 import Logo from "../../images/Logo-Sticks.png";
 import { LOGIN_IN } from "../../constants/actionsTypes";
 import ReactLoading from "react-loading";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import { FcGoogle } from "react-icons/fc";
+import { SiFacebook } from "react-icons/si";
+import { IconContext } from "react-icons";
 const initialState = {
   firstName: "",
   lastName: "",
@@ -40,6 +49,16 @@ const Auth = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  const componentClicked = (e) => {};
+  const responseFacebook = async (res) => {
+    console.log(res);
+    try {
+      dispatch({ type: LOGIN_IN, payload: true });
+      dispatch(FacebookSignUp(res, history));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
@@ -73,149 +92,201 @@ const Auth = () => {
         </div>
       ) : null}
 
-      <form action="#" onSubmit={handleSubmit}>
-        <div className="h-screen flex justify-center items-center flex-col ">
-          <div className="w-40 lg:w-56 pb-10" onClick={() => history.push("/")}>
-            <img src={Logo} alt="" />
-          </div>
+      <div className="h-screen flex justify-center items-center flex-col ">
+        <div className="w-40 lg:w-56 pb-10" onClick={() => history.push("/")}>
+          <img src={Logo} alt="" />
+        </div>
 
-          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8  flex flex-col w-11/12 lg:w-1/3 ">
-            <div className="">
-              {!isSignUp && (
-                <div className="text-center">
-                  <p className="text-center text-2xl pb-5">
-                    Ingresa a tu cuenta
-                  </p>
+        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8  flex flex-col w-11/12 lg:w-1/3 ">
+          <div className="flex flex-col">
+            {!isSignUp && (
+              <div className="text-center">
+                <p className="text-center text-xl pb-5">Ingresa a tu cuenta</p>
+                <div className="text-center pb-2">
                   <GoogleLogin
-                    className="text-center"
+                    className="w-full text-center"
                     clientId="104027593023-skbtgi9mot6e86as2alipag0hmfmchm1.apps.googleusercontent.com"
                     onSuccess={googleSuccess}
                     onFailure={googleFailure}
                     cookiePolicy="single_host_origin"
-                    buttonText="Iniciar sesión con Google"
-                  ></GoogleLogin>
-                  <div class="flex justify-between items-center mt-3">
-                    <hr class="w-full" /> <span class="p-2 mb-1">O</span>
-                    <hr class="w-full" />
-                  </div>
-                </div>
-              )}
-            </div>
+                    render={(renderProps) => (
+                      <button
+                        onClick={renderProps.onClick}
+                        className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-sm w-full shadow-md border border-gray-100 hover:opacity-70"
+                      >
+                        <div className="">
+                          <IconContext.Provider
+                            value={{
+                              style: { display: "inline" },
+                              className: "text-2xl",
+                            }}
+                          >
+                            <FcGoogle></FcGoogle>
+                          </IconContext.Provider>
 
-            {isSignUp && (
-              <div className="mb-4 grid grid-cols-2 gap-4 mt-10">
-                <div>
-                  <label
-                    className="block text-grey-darker text-sm font-bold mb-2"
-                    htmlFor="firstName"
-                  >
-                    Nombre
-                  </label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                    id="firstName"
-                    type="text"
-                    placeholder="Nombre"
-                    name="firstName"
-                    onChange={handleChange}
-                  />
+                          <p> Continuar con Google</p>
+                        </div>
+                      </button>
+                    )}
+                  ></GoogleLogin>
                 </div>
                 <div>
-                  <label
-                    className="block text-grey-darker text-sm font-bold mb-2"
-                    htmlFor="lastName"
-                  >
-                    Apellido
-                  </label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                    id="lastName"
-                    type="text"
-                    placeholder="Appellido"
-                    name="lastName"
-                    onChange={handleChange}
+                  <FacebookLogin
+                    appId="903477863803438"
+                    autoLoad={false}
+                    fields="name,email,picture"
+                    onClick={componentClicked}
+                    callback={responseFacebook}
+                    render={(renderProps) => (
+                      <button
+                        onClick={renderProps.onClick}
+                        className=" text-white bg-blue-600 py-3 px-3 mt-0 rounded-sm w-full hover:opacity-70"
+                      >
+                        <div className="">
+                          <div>
+                            <IconContext.Provider
+                              value={{
+                                style: { display: "inline" },
+                                className: "text-2xl ",
+                              }}
+                            >
+                              <SiFacebook></SiFacebook>
+                            </IconContext.Provider>
+
+                            <p> Continuar con Facebook</p>
+                          </div>
+                        </div>
+                      </button>
+                    )}
                   />
                 </div>
               </div>
             )}
-            <div className="mb-4">
-              <label
-                className="block text-grey-darker text-sm font-bold mb-2"
-                htmlFor="username"
-              >
-                Correo electrónico
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                id="email"
-                type="email"
-                placeholder="ejemplo@gmail.com"
-                name="email"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-grey-darker text-sm font-bold mb-2"
-                htmlFor="password"
-              >
-                Contraseña
-              </label>
-              <input
-                className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker"
-                name="password"
-                type="password"
-                placeholder="******"
-                onChange={handleChange}
-              />
-            </div>
-            {isSignUp && (
-              <div className="mb-4">
-                <label
-                  className="block text-grey-darker text-sm font-bold mb-2"
-                  htmlFor="password"
-                >
-                  Confirmar Contraseña
-                </label>
-                <input
-                  className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
-                  name="confirmPassword"
-                  type="password"
-                  placeholder="******"
-                  onChange={handleChange}
-                />
-              </div>
-            )}
-            <div className="flex items-center justify-between mt-4 flex-col md:flex-row">
-              <button
-                className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
-                type="submit"
-              >
-                {isSignUp ? "Registrarse" : "Iniciar sesión"}
-              </button>
-              {!isSignUp && (
-                <a
-                  className="my-2 md:my-0 font-bold text-sm text-blue hover:text-blue-darker"
-                  href="#"
-                >
-                  Olvidé mi contraseña
-                </a>
-              )}
-            </div>
-            <div className="text-center ">
-              <a
-                className="my-2 md:my-0 md:float-right font-bold text-sm text-blue hover:text-blue-darker"
-                href="#"
-                onClick={() => setIsSignUp(!isSignUp)}
-              >
-                {isSignUp
-                  ? "Ya tienes una cuenta?  Inicia Sesión"
-                  : "No tienes una cuenta? Regístrate"}
-              </a>
-            </div>
+          </div>
+
+          <div className="display-none">
+            {false ? (
+              <form action="#" onSubmit={handleSubmit}>
+                <div className="flex justify-between items-center mt-3">
+                  <hr className="w-full" /> <span className="p-2 mb-1">O</span>
+                  <hr className="w-full" />
+                </div>
+                {isSignUp && (
+                  <div className="mb-4 grid grid-cols-2 gap-4 mt-10">
+                    <div>
+                      <label
+                        className="block text-grey-darker text-sm font-bold mb-2"
+                        htmlFor="firstName"
+                      >
+                        Nombre
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                        id="firstName"
+                        type="text"
+                        placeholder="Nombre"
+                        name="firstName"
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        className="block text-grey-darker text-sm font-bold mb-2"
+                        htmlFor="lastName"
+                      >
+                        Apellido
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                        id="lastName"
+                        type="text"
+                        placeholder="Appellido"
+                        name="lastName"
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                )}
+                <div className="mb-4">
+                  <label
+                    className="block text-grey-darker text-sm font-bold mb-2"
+                    htmlFor="username"
+                  >
+                    Correo electrónico
+                  </label>
+                  <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                    id="email"
+                    type="email"
+                    placeholder="ejemplo@gmail.com"
+                    name="email"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    className="block text-grey-darker text-sm font-bold mb-2"
+                    htmlFor="password"
+                  >
+                    Contraseña
+                  </label>
+                  <input
+                    className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker"
+                    name="password"
+                    type="password"
+                    placeholder="******"
+                    onChange={handleChange}
+                  />
+                </div>
+                {isSignUp && (
+                  <div className="mb-4">
+                    <label
+                      className="block text-grey-darker text-sm font-bold mb-2"
+                      htmlFor="password"
+                    >
+                      Confirmar Contraseña
+                    </label>
+                    <input
+                      className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
+                      name="confirmPassword"
+                      type="password"
+                      placeholder="******"
+                      onChange={handleChange}
+                    />
+                  </div>
+                )}
+                <div className="flex items-center justify-between mt-4 flex-col md:flex-row">
+                  <button
+                    className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+                    type="submit"
+                  >
+                    {isSignUp ? "Registrarse" : "Iniciar sesión"}
+                  </button>
+                  {!isSignUp && (
+                    <a
+                      className="my-2 md:my-0 font-bold text-sm text-blue hover:text-blue-darker"
+                      href="#"
+                    >
+                      Olvidé mi contraseña
+                    </a>
+                  )}
+                </div>
+                <div className="text-center ">
+                  <a
+                    className="my-2 md:my-0 md:float-right font-bold text-sm text-blue hover:text-blue-darker"
+                    href="#"
+                    onClick={() => setIsSignUp(!isSignUp)}
+                  >
+                    {isSignUp
+                      ? "Ya tienes una cuenta?  Inicia Sesión"
+                      : "No tienes una cuenta? Regístrate"}
+                  </a>
+                </div>
+              </form>
+            ) : null}
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };
