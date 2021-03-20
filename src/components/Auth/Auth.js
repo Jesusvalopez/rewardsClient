@@ -135,8 +135,8 @@ const Auth = () => {
                     appId="903477863803438"
                     autoLoad={false}
                     fields="name,email,picture"
-                    onClick={componentClicked}
                     callback={responseFacebook}
+                    disableMobileRedirect={true}
                     render={(renderProps) => (
                       <button
                         onClick={renderProps.onClick}
