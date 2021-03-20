@@ -4,6 +4,7 @@ import Auth from "./components/Auth/Auth";
 import Home from "./components/Home/Home";
 import Welcome from "./components/Welcome/Welcome";
 import PrivacyPolicy from "./components/Welcome/PrivacyPolicy";
+import DataDeletion from "./components/Welcome/DataDeletion";
 import Coupons from "./components/Coupons/Coupons";
 import { CSSTransition } from "react-transition-group";
 import { getMyCouponsCount } from "./actions/coupons";
@@ -45,6 +46,11 @@ const App = () => {
           exact
           path="/politica-privacidad"
           component={PrivacyPolicy}
+        ></Route>
+        <Route
+          exact
+          path="/eliminacion-de-datos"
+          component={DataDeletion}
         ></Route>
         <Route exact path="/" component={Welcome}></Route>
         <Route exact path="/login" component={Auth}></Route>
