@@ -97,11 +97,13 @@ const Auth = () => {
           <img src={Logo} alt="" />
         </div>
 
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8  flex flex-col w-11/12 lg:w-1/3 ">
+        <div className="px-8 pt-6 pb-8  flex flex-col w-full lg:w-1/3 ">
           <div className="flex flex-col">
             {!isSignUp && (
               <div className="text-center">
-                <p className="text-center text-xl pb-5">Ingresa a tu cuenta</p>
+                <p className="text-center text-2xl pb-5 text-black">
+                  Ingresa a tu cuenta
+                </p>
                 <div className="text-center pb-2">
                   <GoogleLogin
                     className="w-full text-center"
@@ -112,7 +114,7 @@ const Auth = () => {
                     render={(renderProps) => (
                       <button
                         onClick={renderProps.onClick}
-                        className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-sm w-full shadow-md border border-gray-100 hover:opacity-70"
+                        className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-2xl w-full shadow-md border border-gray-100 hover:opacity-70"
                       >
                         <div className="">
                           <IconContext.Provider
@@ -140,7 +142,7 @@ const Auth = () => {
                     render={(renderProps) => (
                       <button
                         onClick={renderProps.onClick}
-                        className=" text-white bg-blue-600 py-3 px-3 mt-0 rounded-sm w-full hover:opacity-70"
+                        className=" text-white bg-blue-600 py-3 px-3 mt-0 rounded-2xl w-full hover:opacity-70"
                       >
                         <div className="">
                           <div>
