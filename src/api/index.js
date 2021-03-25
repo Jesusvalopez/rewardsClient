@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app",
-  //baseURL: "http://localhost:5000",
+  //baseURL: "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app",
+  baseURL: "http://localhost:5000",
 });
 
 API.interceptors.request.use((req) => {
@@ -35,3 +35,8 @@ export const facebookSignUp = (formData) =>
 
 export const fetchMyPoints = (page) =>
   API.get("/points/my-points?page=" + page);
+
+export const fetchWheelData = () => API.get("/wheel");
+export const updateUserCommune = (commune) =>
+  API.post("/user/update-commune", { commune });
+export const fetchWheelPrize = () => API.get("/wheel/prize");

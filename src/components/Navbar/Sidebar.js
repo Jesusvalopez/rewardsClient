@@ -3,12 +3,21 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import profilePicture from "../../assets/img/team-2-800x800.jpg";
+import { FaCoins } from "react-icons/fa";
+import {
+  RiCoupon3Fill,
+  RiLogoutBoxFill,
+  RiStarFill,
+  RiEditCircleFill,
+} from "react-icons/ri";
+import { IconContext } from "react-icons";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const coupons_count = useSelector((state) => state.couponsCount);
+  const tokensCount = useSelector((state) => state.tokensCount);
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -34,26 +43,72 @@ const Sidebar = () => {
         </div>
         <div className="flex-1">
           <div className="h-full py-12">
-            <p className="font-thin">Mi perfil</p>
             <p className="font-bold text-lg">{user?.result.name}</p>
+            <p>
+              <IconContext.Provider
+                value={{
+                  style: { display: "inline" },
+                  className: "text-2xl text-yellow-500",
+                }}
+              >
+                <FaCoins></FaCoins>
+              </IconContext.Provider>{" "}
+              Tokens <span className="yellow-badge"> {tokensCount}</span>
+            </p>
           </div>
         </div>
       </div>
-
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
         <p>
+          <IconContext.Provider
+            value={{
+              style: { display: "inline" },
+              className: "text-2xl text-yellow-500",
+            }}
+          >
+            <RiEditCircleFill></RiEditCircleFill>
+          </IconContext.Provider>{" "}
+          <Link to="/wheel-of-fortune">Ruleta</Link>
+        </p>
+      </div>
+      <div className="mt-2 py-3 border-t border-gray-300 px-4">
+        <p>
+          <IconContext.Provider
+            value={{
+              style: { display: "inline" },
+              className: "text-2xl text-yellow-500",
+            }}
+          >
+            <RiStarFill></RiStarFill>
+          </IconContext.Provider>{" "}
           <Link to="/home">Puntos</Link>
         </p>
       </div>
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
         <p>
           <Link to="/my-coupons">
-            Cupones <span className="red-badge">{coupons_count}</span>
+            <IconContext.Provider
+              value={{
+                style: { display: "inline" },
+                className: "text-2xl text-yellow-500",
+              }}
+            >
+              <RiCoupon3Fill></RiCoupon3Fill>
+            </IconContext.Provider>{" "}
+            Cupones <span className="yellow-badge">{coupons_count}</span>
           </Link>
         </p>
       </div>
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
         <a href="#" onClick={logout}>
+          <IconContext.Provider
+            value={{
+              style: { display: "inline" },
+              className: "text-2xl text-yellow-500",
+            }}
+          >
+            <RiLogoutBoxFill></RiLogoutBoxFill>
+          </IconContext.Provider>{" "}
           Cerrar Sesión
         </a>
       </div>

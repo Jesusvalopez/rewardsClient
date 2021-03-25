@@ -6,6 +6,8 @@ import points from "./points";
 import couponsCount from "./couponsCount";
 import exchangeCoupons from "./exchangeCoupons";
 import loginIn from "./loginIn";
+import wheelData from "./wheelFortune";
+import tokensCount from "./tokensCount";
 
 const rootReducer = combineReducers({
   coupons,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
   couponsCount,
   exchangeCoupons,
   loginIn,
+  wheelData,
+  tokensCount,
 });
 
 export default (state, action) =>

@@ -9,8 +9,7 @@ import Sidebar from "../Navbar/Sidebar";
 import { getMyPoints } from "../../actions/points";
 import PointsHistory from "../Points/PointsHistory";
 import { formatedNumber } from "../../helpers/formats";
-import { getMyCouponsCount } from "../../actions/coupons";
-import { getExchangeCoupons } from "../../actions/coupons";
+
 import PointsExchange from "../Points/PointsExchange";
 
 const Home = () => {
@@ -35,9 +34,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    // dispatch(getMyCouponsCount());
     dispatch(getMyPoints(0));
-    dispatch(getExchangeCoupons());
   }, []);
 
   const logout = () => {
@@ -55,15 +52,7 @@ const Home = () => {
             <Sidebar></Sidebar>
             {/* Componente central de puntos*/}
             <div className="order-3 sm:order-1 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-0 px-6">
-              <div className="flex justify-center pt-5">
-                <div className="w-full lg:w-full bg-gradient-to-r from-sticksyellow to-yellow-500 p-5 rounded-md text-center">
-                  <p className="text-white font-bold text-xl">Tus puntos</p>
-                  <p className="text-white text-4xl font-bold">
-                    {formatedNumber(pointsTotal)}
-                  </p>
-                </div>
-              </div>
-              <div className="text-center mt-4">
+              <div className="text-center mt-5">
                 <div className="mb-2 text-gray-500">
                   <p className="font-medium text-sm px-10">
                     Cada compra que haces en STICKS genera puntos que luego
@@ -72,6 +61,15 @@ const Home = () => {
                   </p>
                 </div>
               </div>
+              <div className="flex justify-center pt-4">
+                <div className="w-full lg:w-full bg-gradient-to-r from-sticksyellow to-yellow-500 p-5 rounded-md text-center">
+                  <p className="text-white font-bold text-xl">Tus puntos</p>
+                  <p className="text-white text-4xl font-bold">
+                    {formatedNumber(pointsTotal)}
+                  </p>
+                </div>
+              </div>
+
               <div className="mt-5 py-5 border-t border-gray-300">
                 <div className="flex flex-wrap ">
                   <div className="w-full lg:w-9/12 px-4">

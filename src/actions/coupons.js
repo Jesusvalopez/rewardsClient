@@ -9,6 +9,7 @@ import {
   FETCH_ALL_POINTS_TOP,
   FETCH_ALL_COUPONS_USED,
   FETCH_ALL_COUPONS_EXPIRED,
+  FETCH_TOKENS_COUNT,
 } from "..//constants/actionsTypes";
 import * as api from "../api";
 import { getMyPoints } from "./points";
@@ -52,7 +53,8 @@ export const getMyCouponsCount = () => async (dispatch) => {
   try {
     const { data } = await api.fetchMyCouponsCount();
     console.log(data);
-    dispatch({ type: FETCH_COUPONS_COUNT, payload: data });
+    dispatch({ type: FETCH_COUPONS_COUNT, payload: data.coupons });
+    dispatch({ type: FETCH_TOKENS_COUNT, payload: data.tokens });
   } catch (error) {
     console.log(error.message);
   }

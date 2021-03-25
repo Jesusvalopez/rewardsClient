@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProgressBar from "../Utils/ProgressBar";
 import { useSelector, useDispatch } from "react-redux";
 import { exchangeCoupon } from "../../actions/coupons";
 import ContentLoader from "react-content-loader";
+import { getExchangeCoupons } from "../../actions/coupons";
 
 const CouponsExchangeLoader = () => (
   <ContentLoader width={"100%"} height={200}>
@@ -38,6 +39,10 @@ const PointsExchange = () => {
   };
 
   //opacity-50 cursor-not-allowed
+
+  useEffect(() => {
+    dispatch(getExchangeCoupons());
+  }, []);
 
   return (
     <>

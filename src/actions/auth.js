@@ -33,7 +33,7 @@ export const FacebookSignUp = (formData, history) => async (dispatch) => {
 
     dispatch({ type: AUTH, data });
     dispatch({ type: LOGIN_IN, payload: false });
-    history.push("/home");
+    redirect(data, history);
   } catch (error) {
     console.log(error);
   }
@@ -45,8 +45,17 @@ export const GoogleSignUp = (formData, history) => async (dispatch) => {
 
     dispatch({ type: AUTH, data });
     dispatch({ type: LOGIN_IN, payload: false });
-    history.push("/home");
+
+    redirect(data, history);
   } catch (error) {
     console.log(error);
+  }
+};
+
+const redirect = (data, history) => {
+  if (data.result.commune) {
+    history.push("/home");
+  } else {
+    history.push("/wheel-of-fortune");
   }
 };
