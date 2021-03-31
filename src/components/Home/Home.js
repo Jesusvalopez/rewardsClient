@@ -14,7 +14,7 @@ import PointsExchange from "../Points/PointsExchange";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const history = useHistory();
   const pointsTotal = useSelector((state) => state.points.pointsTotal);
   {
@@ -39,7 +39,7 @@ const Home = () => {
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    setUser(null);
+    // setUser(null);
     history.push("/");
   };
 

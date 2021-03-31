@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Auth from "./components/Auth/Auth";
+import LoginRedirect from "./components/Auth/LoginRedirect";
 import Home from "./components/Home/Home";
 import Welcome from "./components/Welcome/Welcome";
 import PrivacyPolicy from "./components/Welcome/PrivacyPolicy";
@@ -8,6 +9,7 @@ import DataDeletion from "./components/Welcome/DataDeletion";
 import Coupons from "./components/Coupons/Coupons";
 import WheelFortune from "./components/WheelFortune/WheelFortune";
 import { getMyCouponsCount } from "./actions/coupons";
+import NotFound from "./components/NotFound";
 
 import decode from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +26,7 @@ const App = () => {
 
     try {
       const decodedToken = decode(token);
+      console.log(decodedToken);
       if (decodedToken.exp * 1000 < new Date().getTime()) {
         return false;
       }
@@ -54,7 +57,13 @@ const App = () => {
           component={DataDeletion}
         ></Route>
         <Route exact path="/" component={Welcome}></Route>
+
         <Route exact path="/login" component={Auth}></Route>
+        <Route
+          exact
+          path="/auth/google/redirect"
+          component={LoginRedirect}
+        ></Route>
 
         {checkAuth() ? (
           <Route exact path="/my-coupons" component={Coupons}></Route>
@@ -66,6 +75,7 @@ const App = () => {
         ) : (
           <Redirect to={{ pathname: "/login" }}></Redirect>
         )}
+        <Route component={NotFound}></Route>
       </Switch>
     </BrowserRouter>
   );

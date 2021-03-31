@@ -30,6 +30,11 @@ const Auth = () => {
   const [formData, setFormData] = useState(initialState);
   const loginIn = useSelector((state) => state.loginIn);
   const history = useHistory();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
+  if (user) {
+    history.push("/home");
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -105,33 +110,29 @@ const Auth = () => {
                   Ingresa a tu cuenta
                 </p>
                 <div className="text-center pb-2">
-                  <GoogleLogin
-                    className="w-full text-center"
-                    clientId="104027593023-skbtgi9mot6e86as2alipag0hmfmchm1.apps.googleusercontent.com"
-                    onSuccess={googleSuccess}
-                    onFailure={googleFailure}
-                    cookiePolicy="single_host_origin"
-                    render={(renderProps) => (
-                      <button
-                        onClick={renderProps.onClick}
-                        className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-2xl w-full shadow-md border border-gray-100 hover:opacity-70"
+                  <button
+                    onClick={() => {
+                      console.log("a");
+                      window.location =
+                        "http://localhost:5000/user/auth/google";
+                    }}
+                    className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-2xl w-full shadow-md border border-gray-100 hover:opacity-70"
+                  >
+                    <div className="">
+                      <IconContext.Provider
+                        value={{
+                          style: { display: "inline" },
+                          className: "text-2xl",
+                        }}
                       >
-                        <div className="">
-                          <IconContext.Provider
-                            value={{
-                              style: { display: "inline" },
-                              className: "text-2xl",
-                            }}
-                          >
-                            <FcGoogle></FcGoogle>
-                          </IconContext.Provider>
+                        <FcGoogle></FcGoogle>
+                      </IconContext.Provider>
 
-                          <p> Continuar con Google</p>
-                        </div>
-                      </button>
-                    )}
-                  ></GoogleLogin>
+                      <p> Continuar con Google</p>
+                    </div>
+                  </button>
                 </div>
+
                 <div>
                   <FacebookLogin
                     appId="903477863803438"
