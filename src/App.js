@@ -59,11 +59,7 @@ const App = () => {
         <Route exact path="/" component={Welcome}></Route>
 
         <Route exact path="/login" component={Auth}></Route>
-        <Route
-          exact
-          path="/auth/google/redirect"
-          component={LoginRedirect}
-        ></Route>
+        <Route exact path="/auth/redirect" component={LoginRedirect}></Route>
 
         {checkAuth() ? (
           <Route exact path="/my-coupons" component={Coupons}></Route>

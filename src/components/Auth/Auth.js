@@ -112,9 +112,8 @@ const Auth = () => {
                 <div className="text-center pb-2">
                   <button
                     onClick={() => {
-                      console.log("a");
                       window.location =
-                        "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app/user/auth/google";
+                        "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app/passport/auth/google";
                     }}
                     className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-2xl w-full shadow-md border border-gray-100 hover:opacity-70"
                   >
@@ -134,34 +133,28 @@ const Auth = () => {
                 </div>
 
                 <div>
-                  <FacebookLogin
-                    appId="903477863803438"
-                    autoLoad={false}
-                    fields="name,email,picture"
-                    callback={responseFacebook}
-                    disableMobileRedirect={true}
-                    render={(renderProps) => (
-                      <button
-                        onClick={renderProps.onClick}
-                        className=" text-white bg-blue-600 py-3 px-3 mt-0 rounded-2xl w-full hover:opacity-70"
-                      >
-                        <div className="">
-                          <div>
-                            <IconContext.Provider
-                              value={{
-                                style: { display: "inline" },
-                                className: "text-2xl ",
-                              }}
-                            >
-                              <SiFacebook></SiFacebook>
-                            </IconContext.Provider>
+                  <button
+                    onClick={() => {
+                      window.location =
+                        "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app/passport/auth/facebook";
+                    }}
+                    className=" text-white bg-blue-600 py-3 px-3 mt-0 rounded-2xl w-full hover:opacity-70"
+                  >
+                    <div className="">
+                      <div>
+                        <IconContext.Provider
+                          value={{
+                            style: { display: "inline" },
+                            className: "text-2xl ",
+                          }}
+                        >
+                          <SiFacebook></SiFacebook>
+                        </IconContext.Provider>
 
-                            <p> Continuar con Facebook</p>
-                          </div>
-                        </div>
-                      </button>
-                    )}
-                  />
+                        <p> Continuar con Facebook</p>
+                      </div>
+                    </div>
+                  </button>
                 </div>
               </div>
             )}
