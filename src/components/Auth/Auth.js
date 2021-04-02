@@ -115,6 +115,8 @@ const Auth = () => {
                     onClick={() => {
                       window.location =
                         "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app/passport/auth/google";
+                      // window.location =
+                      //    "http://localhost:5000/passport/auth/google";
                     }}
                     className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-2xl w-full shadow-md border border-gray-100 hover:opacity-70"
                   >
