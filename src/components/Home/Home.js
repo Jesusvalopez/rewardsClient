@@ -17,21 +17,20 @@ const Home = () => {
   // const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const history = useHistory();
   const pointsTotal = useSelector((state) => state.points.pointsTotal);
-  {
-    useEffect(() => {
-      const user = JSON.parse(localStorage.getItem("profile"));
-      const token = user?.token;
 
-      if (token) {
-        const decodedToken = decode(token);
-        if (decodedToken.exp * 1000 < new Date().getTime()) {
-          logout();
-        }
-      } else {
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("profile"));
+    const token = user?.token;
+
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
         logout();
       }
-    }, []);
-  }
+    } else {
+      logout();
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(getMyPoints(0));

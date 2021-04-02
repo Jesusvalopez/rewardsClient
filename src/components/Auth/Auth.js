@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -27,12 +27,13 @@ const Auth = () => {
   const dispatch = useDispatch();
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
   const [formData, setFormData] = useState(initialState);
   const loginIn = useSelector((state) => state.loginIn);
   const history = useHistory();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  //const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
-  if (user) {
+  if (JSON.parse(localStorage.getItem("profile"))) {
     history.push("/home");
   }
 

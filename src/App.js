@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const App = () => {
   const authData = useSelector((state) => state.auth.authData);
-
+  const dispatch = useDispatch();
   const checkAuth = () => {
     const token = JSON.parse(localStorage.getItem("profile"))?.token;
 
@@ -28,6 +28,7 @@ const App = () => {
       const decodedToken = decode(token);
       console.log(decodedToken);
       if (decodedToken.exp * 1000 < new Date().getTime()) {
+        dispatch({ type: "LOGOUT" });
         return false;
       }
     } catch (error) {
@@ -35,8 +36,6 @@ const App = () => {
     }
     return true;
   };
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getMyCouponsCount());
