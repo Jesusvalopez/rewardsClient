@@ -45,7 +45,6 @@ export const exchangeCoupon = (exchangeCoupon) => async (dispatch) => {
     //dispatch({ type: FETCH_ALL_POINTS_TOP, payload: data });
   } catch (error) {
     console.log(error);
-    alert(error.response.data.message);
   }
 };
 

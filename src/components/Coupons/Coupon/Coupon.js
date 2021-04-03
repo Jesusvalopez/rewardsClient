@@ -11,6 +11,8 @@ const Coupon = ({ coupon }) => {
           <div className="flex-1 pl-10">
             <div className="text-white font-bold text-3xl">
               {coupon.code ? coupon.code : ""}{" "}
+            </div>
+            <div className="text-white font-bold text-3xl">
               {coupon.type == "Product"
                 ? coupon.name
                 : coupon.value
