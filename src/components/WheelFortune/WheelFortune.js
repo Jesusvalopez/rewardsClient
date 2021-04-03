@@ -251,9 +251,13 @@ const WheelFortune = () => {
                     textColors={["#000000", "#000000"]}
                     innerRadius={20}
                     innerBorderColor={"black"}
-                    innerBorderWidth={5}
+                    innerBorderWidth={10}
                     outerBorderWidth={15}
                     className="bg-black"
+                    fontSize={14}
+                    textDistance={70}
+                    radiusLineWidth={3}
+                    perpendicularText={true}
                     onStopSpinning={() => {
                       wheelStopSpinning();
                     }}
@@ -266,7 +270,11 @@ const WheelFortune = () => {
                     >
                       Girar la ruleta
                     </button>
-                  ) : null}
+                  ) : (
+                    <p className="pt-5 font-bold">
+                      No tienes tokens para girar la ruleta.
+                    </p>
+                  )}
                 </>
               ) : (
                 <WheelLoader></WheelLoader>

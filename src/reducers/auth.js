@@ -3,8 +3,8 @@ import { AUTH, LOGOUT } from "..//constants/actionsTypes";
 export default (state = { authData: null }, action) => {
   switch (action.type) {
     case AUTH:
-      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
-      return { ...state, authData: action?.data };
+      localStorage.setItem("profile", action.payload);
+      return { ...state, authData: action.payload };
       break;
     case LOGOUT:
       localStorage.clear();
