@@ -254,10 +254,10 @@ const WheelFortune = () => {
                     innerBorderWidth={10}
                     outerBorderWidth={15}
                     className="bg-black"
-                    fontSize={14}
-                    textDistance={70}
+                    fontSize={20}
+                    textDistance={60}
                     radiusLineWidth={3}
-                    perpendicularText={true}
+                    perpendicularText={false}
                     onStopSpinning={() => {
                       wheelStopSpinning();
                     }}
