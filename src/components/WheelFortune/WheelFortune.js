@@ -249,13 +249,13 @@ const WheelFortune = () => {
                     data={wheelData}
                     backgroundColors={["#f7b026", "#e4831b"]}
                     textColors={["#000000", "#000000"]}
-                    innerRadius={20}
+                    innerRadius={0}
                     innerBorderColor={"black"}
                     innerBorderWidth={10}
-                    outerBorderWidth={15}
+                    outerBorderWidth={10}
                     className="bg-black"
-                    fontSize={20}
-                    textDistance={60}
+                    fontSize={22}
+                    textDistance={52}
                     radiusLineWidth={3}
                     perpendicularText={false}
                     onStopSpinning={() => {
