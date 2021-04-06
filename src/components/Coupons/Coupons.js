@@ -137,9 +137,19 @@ const Coupons = () => {
                   se aplicará automáticamente.
                 </div>
                 <div className="text-center text-sm font-medium text-gray-500 px-5 mb-4">
-                  <p className="font-bold text-black">En nuestra web:</p>
-                  Ingresa el código del cupón en el campo 'cupón' al momento de
-                  hacer checkout.
+                  <p className="font-bold text-black">
+                    En nuestra web{" "}
+                    <a href="https://sticks.cl" className="hover:opacity-70">
+                      www.sticks.cl
+                    </a>
+                    :
+                  </p>
+                  Ingresa el código del cupón (8 dígitos) en el campo 'cupón' al
+                  momento de pagar en{" "}
+                  <a href="https://sticks.cl" className="hover:opacity-70">
+                    www.sticks.cl
+                  </a>
+                  .
                 </div>
               </div>
             </div>

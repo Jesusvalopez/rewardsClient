@@ -58,35 +58,42 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
+
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
-        <p>
-          <IconContext.Provider
-            value={{
-              style: { display: "inline" },
-              className: "text-2xl text-yellow-500",
-            }}
-          >
-            <RiEditCircleFill></RiEditCircleFill>
-          </IconContext.Provider>{" "}
-          <Link to="/wheel-of-fortune">Ruleta</Link>
-        </p>
+        <Link to="/wheel-of-fortune">
+          <p>
+            <IconContext.Provider
+              value={{
+                style: { display: "inline" },
+                className: "text-2xl text-yellow-500",
+              }}
+            >
+              <RiEditCircleFill></RiEditCircleFill>
+            </IconContext.Provider>{" "}
+            Ruleta
+          </p>{" "}
+        </Link>
       </div>
+
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
-        <p>
-          <IconContext.Provider
-            value={{
-              style: { display: "inline" },
-              className: "text-2xl text-yellow-500",
-            }}
-          >
-            <RiStarFill></RiStarFill>
-          </IconContext.Provider>{" "}
-          <Link to="/home">Puntos</Link>
-        </p>
+        <Link to="/home">
+          <p>
+            <IconContext.Provider
+              value={{
+                style: { display: "inline" },
+                className: "text-2xl text-yellow-500",
+              }}
+            >
+              <RiStarFill></RiStarFill>
+            </IconContext.Provider>{" "}
+            Puntos
+          </p>
+        </Link>
       </div>
+
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
-        <p>
-          <Link to="/my-coupons">
+        <Link to="/my-coupons">
+          <p>
             <IconContext.Provider
               value={{
                 style: { display: "inline" },
@@ -96,20 +103,22 @@ const Sidebar = () => {
               <RiCoupon3Fill></RiCoupon3Fill>
             </IconContext.Provider>{" "}
             Cupones <span className="yellow-badge">{coupons_count}</span>
-          </Link>
-        </p>
+          </p>
+        </Link>
       </div>
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
         <a href="#" onClick={logout}>
-          <IconContext.Provider
-            value={{
-              style: { display: "inline" },
-              className: "text-2xl text-yellow-500",
-            }}
-          >
-            <RiLogoutBoxFill></RiLogoutBoxFill>
-          </IconContext.Provider>{" "}
-          Cerrar Sesión
+          <p>
+            <IconContext.Provider
+              value={{
+                style: { display: "inline" },
+                className: "text-2xl text-yellow-500",
+              }}
+            >
+              <RiLogoutBoxFill></RiLogoutBoxFill>
+            </IconContext.Provider>{" "}
+            Cerrar Sesión
+          </p>
         </a>
       </div>
     </div>
