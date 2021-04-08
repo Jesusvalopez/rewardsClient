@@ -58,7 +58,7 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-
+      {/*
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
         <Link to="/wheel-of-fortune">
           <p>
@@ -74,7 +74,7 @@ const Sidebar = () => {
           </p>{" "}
         </Link>
       </div>
-
+*/}
       <div className="mt-2 py-3 border-t border-gray-300 px-4">
         <Link to="/home">
           <p>
