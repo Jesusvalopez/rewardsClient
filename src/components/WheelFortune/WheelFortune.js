@@ -13,6 +13,7 @@ import ContentLoader from "react-content-loader";
 import Select from "react-select";
 import ReactLoading from "react-loading";
 import { getMyCouponsCount } from "../../actions/coupons";
+import WinModal from "./WinModal";
 
 const WheelFortune = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const WheelFortune = () => {
 
   //const [mustSpin, setMustSpin] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showWinModal, setShowWinModal] = useState(false);
   const [commune, setCommune] = useState(null);
   const [exchangingPrize, setExchangingPrize] = useState(false);
   const [updatingCommune, setUpdatingCommune] = useState(false);
@@ -54,6 +56,7 @@ const WheelFortune = () => {
   useEffect(() => {
     if (wheelFinished) {
       setExchangingPrize(false);
+      setShowWinModal(true);
       notifySuccess("Premio canjeado");
       dispatch({ type: "WHEEL_FINISHED", payload: false });
     }
@@ -164,6 +167,7 @@ const WheelFortune = () => {
 
   return (
     <>
+      {showWinModal ? <WinModal></WinModal> : null}
       <ToastContainer />
       {exchangingPrize ? (
         <div className="fixed h-full w-full flex flex-col items-center justify-center bg-opacity-50 bg-gray-700 z-50">
@@ -271,9 +275,7 @@ const WheelFortune = () => {
                       Girar la ruleta
                     </button>
                   ) : (
-                    <p className="pt-5 font-bold">
-                      No tienes tokens para girar la ruleta.
-                    </p>
+                    <p className="pt-5 font-bold">Ya giraste la ruleta.</p>
                   )}
                 </>
               ) : (

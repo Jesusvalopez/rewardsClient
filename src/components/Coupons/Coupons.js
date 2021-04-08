@@ -129,7 +129,7 @@ const Coupons = () => {
             <div className="h-2/3 relative flex flex-col min-w-0 break-words bg-white xl:w-3/5 mb-6 shadow-xl rounded-lg mt-0 m-5">
               <div className=" m-5">
                 <div className="col-span-2 text-center text-xl font-bold mb-2">
-                  ¿Cómo usar?
+                  ¿Cómo usar tus cupones?
                 </div>
                 <div className="text-center text-sm font-medium text-gray-500 px-5 mb-4">
                   <p className="font-bold text-black">En nuestro local:</p>
@@ -138,7 +138,7 @@ const Coupons = () => {
                 </div>
                 <div className="text-center text-sm font-medium text-gray-500 px-5 mb-4">
                   <p className="font-bold text-black">
-                    En nuestra web{" "}
+                    En{" "}
                     <a href="https://sticks.cl" className="hover:opacity-70">
                       www.sticks.cl
                     </a>

@@ -9,15 +9,23 @@ const initialState = {
   finished: false,
   start: false,
   mustSpin: false,
+  coupon: null,
 };
 
 export default (wheelData = initialState, action) => {
   switch (action.type) {
     case FETCH_WHEEL_DATA:
-      return { ...wheelData, wheel: action.payload.wheel };
+      return {
+        ...wheelData,
+        wheel: action.payload.wheel,
+      };
       break;
     case FETCH_WHEEL_PRIZE:
-      return { ...wheelData, winner: action.payload.winner };
+      return {
+        ...wheelData,
+        winner: action.payload.winner,
+        coupon: action.payload.coupon,
+      };
       break;
     case "WHEEL_FINISHED":
       return {
