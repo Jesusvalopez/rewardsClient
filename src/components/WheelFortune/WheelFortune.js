@@ -267,13 +267,7 @@ const WheelFortune = () => {
                     }}
                   />
                   {tokensCount > 0 ? (
-                    <button
-                      className="btn btn-primary font-bold  transition-all duration-150"
-                      type="button"
-                      onClick={() => startWheel()}
-                    >
-                      Girar la ruleta
-                    </button>
+                    <></>
                   ) : (
                     <p className="pt-5 font-bold">Ya giraste la ruleta.</p>
                   )}
