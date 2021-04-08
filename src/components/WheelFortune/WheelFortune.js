@@ -191,7 +191,7 @@ const WheelFortune = () => {
           <div className="mt-5 text-white">Actualizando comuna...</div>
         </div>
       ) : null}
-      {showModal && true ? (
+      {showModal && wheelData.length > 0 ? (
         <>
           <div className="m-10 md:m-0 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none transition-all duration-150">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
