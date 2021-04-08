@@ -57,7 +57,7 @@ const WheelFortune = () => {
     if (wheelFinished) {
       setExchangingPrize(false);
       setShowWinModal(true);
-      notifySuccess("Premio canjeado");
+      // notifySuccess("Premio canjeado");
       dispatch({ type: "WHEEL_FINISHED", payload: false });
     }
   }, [wheelFinished]);
