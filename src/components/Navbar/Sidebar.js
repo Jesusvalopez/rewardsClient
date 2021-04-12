@@ -129,7 +129,7 @@ const Sidebar = () => {
         <div className="text-center">
           <span className="px-1">
             <FacebookShareButton
-              shareUrl="https://premios.sticks.cl"
+              url="https://premios.sticks.cl"
               quote="Compartir"
               hashtag="#RuletaSticks"
             >
