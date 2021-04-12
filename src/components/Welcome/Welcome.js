@@ -23,15 +23,17 @@ const Welcome = () => {
           <h1 className="my-4 text-3xl md:text-6xl text-white font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
             Bienvenido a las STICKS recompensas
           </h1>
+          <p className="text-black leading-normal text-base md:text-2xl mb-2 text-center md:text-left slide-in-bottom-subtitle">
+            Comparte, disfruta y <b> GANA DELICIOSAS RECOMPENSAS</b>
+          </p>
           <p className="text-black leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
-            Beneficios, regalos y premios que <b> STICKS</b> creó para que tu
-            experiencia sea más deliciosa y divertida.
+            ¿Qué puedo ganar con <b> STICKS</b>?
           </p>
 
           <p className="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
             <Link to="/login">
               <button className="text-white font-bold bg-black p-5  hover:opacity-90 rounded-sm shadow-lg hover:shadow-xl text-xl">
-                ¡QUIERO GIRAR LA RULETA!
+                ¡GIRA LA RULETA!
               </button>
             </Link>
           </p>

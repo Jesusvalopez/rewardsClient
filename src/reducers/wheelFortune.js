@@ -10,6 +10,7 @@ const initialState = {
   start: false,
   mustSpin: false,
   coupon: null,
+  message: null,
 };
 
 export default (wheelData = initialState, action) => {
@@ -25,6 +26,7 @@ export default (wheelData = initialState, action) => {
         ...wheelData,
         winner: action.payload.winner,
         coupon: action.payload.coupon,
+        message: action.payload.message,
       };
       break;
     case "WHEEL_FINISHED":

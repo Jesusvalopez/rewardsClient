@@ -12,6 +12,14 @@ import {
 } from "react-icons/ri";
 import { IconContext } from "react-icons";
 
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+} from "react-share";
+
 const Sidebar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,21 +36,13 @@ const Sidebar = () => {
   return (
     <div className="h-2/3 relative flex flex-col min-w-0 break-words bg-white xl:w-1/2 mb-6 shadow-xl rounded-lg mt-0 lg:mx-5">
       <div className="flex  ">
-        <div className="flex-1">
-          <div
-            className="w-4/5 text-center text-white text-6xl shadow-md rounded-full h-auto align-middle border-none m-auto mt-2 bg-gradient-to-r from-sticksyellow to-yellow-500"
-            style={{
-              maxWidth: "150px",
-              width: "80px",
-              lineHeight: "80px",
-              height: "80px",
-            }}
-          >
+        <div className="xl:flex-1">
+          <div className="w-10 xl:w-20 h-10 xl:h-20 text-center text-white leading-10 xl:leading-20 text-2xl xl:text-6xl shadow-md rounded-full align-middle border-none mx-4 xl:mx-auto mt-3 bg-gradient-to-r from-sticksyellow to-yellow-500">
             {user?.result.name[0]}
           </div>
         </div>
         <div className="flex-1 ">
-          <div className="h-full py-8 ">
+          <div className="h-full py-4 xl:py-8 ">
             <p className="font-bold text-lg ">{user?.result.name}</p>
             {/*<p>
               <IconContext.Provider
@@ -120,6 +120,31 @@ const Sidebar = () => {
             Cerrar Sesión
           </p>
         </a>
+      </div>
+      <div className="mt-2 py-3 border-t border-gray-300 px-4">
+        <p className="text-sm">
+          ¡Hey! ¿Nos ayudarías a difundir? Nos vendría bien un poco de apoyo.
+          ¡Seguiremos haciendo cosas geniales!
+        </p>
+        <div className="text-center">
+          <span className="px-1">
+            <FacebookShareButton
+              shareUrl="https://premios.sticks.cl"
+              quote="Compartir"
+              hashtag="#RuletaSticks"
+            >
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+          </span>
+          <span className="px-1">
+            <TwitterShareButton
+              url="https://premios.sticks.cl"
+              title="Compartir"
+            >
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+          </span>
+        </div>
       </div>
     </div>
   );

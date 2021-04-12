@@ -17,7 +17,9 @@ export const rollWheel = (commune) => async (dispatch) => {
     }
 
     dispatch({ type: FETCH_WHEEL_PRIZE, payload: data });
-    dispatch({ type: "WHEEL_START", payload: true });
+    if (data.winner || data.winner === 0) {
+      dispatch({ type: "WHEEL_START", payload: true });
+    }
   } catch (error) {
     console.log(error.message);
   }

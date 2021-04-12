@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         sticksyellow: "#F7C600",
       },
+      lineHeight: {
+        20: "5rem",
+      },
     },
   },
   variants: {

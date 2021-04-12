@@ -31,6 +31,7 @@ const WheelFortune = () => {
   const wheelFinished = useSelector((state) => state.wheelData.finished);
   const wheelStart = useSelector((state) => state.wheelData.start);
   const mustSpin = useSelector((state) => state.wheelData.start);
+  const message = useSelector((state) => state.wheelData.message);
 
   const wheelData = useSelector((state) => state.wheelData.wheel);
 
@@ -43,6 +44,13 @@ const WheelFortune = () => {
       setShowModal(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (message) {
+      setUpdatingCommune(false);
+      notifyError(message);
+    }
+  }, [message]);
 
   useEffect(() => {
     console.log(wheelWinner);
@@ -157,12 +165,6 @@ const WheelFortune = () => {
     setExchangingPrize(true);
     dispatch(getMyCouponsCount());
     dispatch({ type: "WHEEL_FINISHED", payload: true });
-  };
-
-  const startWheel = () => {
-    console.log("iniciando");
-
-    dispatch(rollWheel(null));
   };
 
   return (
