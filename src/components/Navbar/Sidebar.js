@@ -130,7 +130,7 @@ const Sidebar = () => {
           <span className="px-1">
             <FacebookShareButton
               url="https://premios.sticks.cl"
-              quote="Compartir"
+              quote="¡Me gané un cupón girando la ruleta de Sticks!"
               hashtag="#RuletaSticks"
             >
               <FacebookIcon size={32} round />
@@ -139,7 +139,7 @@ const Sidebar = () => {
           <span className="px-1">
             <TwitterShareButton
               url="https://premios.sticks.cl"
-              title="Compartir"
+              title="¡Me gané un cupón girando la ruleta de Sticks! #RuletaSticks"
             >
               <TwitterIcon size={32} round />
             </TwitterShareButton>
