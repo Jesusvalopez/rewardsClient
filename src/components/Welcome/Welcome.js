@@ -20,20 +20,21 @@ const Welcome = () => {
 
       <div className="container   px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center ">
         <div className="flex flex-col w-full lg:w-1/2 justify-center lg:items-start overflow-y-hidden ">
-          <h1 className="my-4 text-3xl md:text-6xl text-white font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
-            Bienvenido a las STICKS recompensas
+          <h1 className="my-2 text-3xl md:text-7xl text-white font-bold leading-tight text-center lg:text-left slide-in-bottom-h1 align-middle">
+            Bienvenido a las STICKS Recompensas
           </h1>
-          <p className="text-black leading-normal text-base md:text-2xl mb-2 text-center md:text-left slide-in-bottom-subtitle">
-            Comparte, disfruta y <b> GANA DELICIOSAS RECOMPENSAS</b>
+
+          <p className="text-white leading-normal text-base md:text-2xl mb-4 text-center md:text-left slide-in-bottom-subtitle">
+            Comparte y disfruta con tus amigos estos deliciosos premios
           </p>
-          <p className="text-black leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
-            ¿Qué puedo ganar con <b> STICKS</b>?
+          <p className="text-black leading-normal text-base md:text-2xl mb-4 text-center md:text-left slide-in-bottom-subtitle">
+            ¿Probarás tu suerte?
           </p>
 
-          <p className="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
+          <p className="text-blue-400 font-bold pb-8 lg:pb-6 text-center fade-in">
             <Link to="/login">
-              <button className="text-white font-bold bg-black p-5  hover:opacity-90 rounded-sm shadow-lg hover:shadow-xl text-xl">
-                ¡GIRA LA RULETA!
+              <button className="text-white font-bold bg-black p-5  hover:opacity-90 rounded-md shadow-lg hover:shadow-xl text-xl">
+                GIRAR LA RULETA
               </button>
             </Link>
           </p>

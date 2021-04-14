@@ -136,12 +136,14 @@ const Auth = () => {
                     </div>
                   </button>
                 </div>
-                {/*
+
                 <div>
                   <button
                     onClick={() => {
                       window.location =
-                        "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app/passport/auth/facebook";
+                        "https://premios-server.sticks.cl/passport/auth/facebook";
+                      /* window.location =
+                        "http://localhost:5000/passport/auth/facebook";*/
                     }}
                     className=" text-white bg-blue-600 py-3 px-3 mt-0 rounded-2xl w-full hover:opacity-70"
                   >
@@ -161,7 +163,6 @@ const Auth = () => {
                     </div>
                   </button>
                 </div>
-                */}
               </div>
             )}
           </div>
