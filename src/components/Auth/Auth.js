@@ -108,7 +108,7 @@ const Auth = () => {
             {!isSignUp && (
               <div className="text-center">
                 <p className="text-center text-2xl pb-5 text-black">
-                  Ingresa a tu cuenta
+                  Estás a un clic de ganar premios y recompensas
                 </p>
                 <div className="text-center pb-2">
                   <button
