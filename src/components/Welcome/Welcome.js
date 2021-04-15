@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/Logo-Sticks.png";
 import people from "../../images/rewards.png";
-import roulette from "../../images/ruleta web.png";
+import roulette from "../../images/ruleta web2.png";
 
 const Welcome = () => {
   return (
@@ -47,7 +47,7 @@ const Welcome = () => {
           Copyright 2021 &copy;{" "}
           <a
             className="text-black no-underline hover:no-underline font-bold"
-            href="#"
+            href="https://sticks.cl"
           >
             {" "}
             STICKS SALTY & SWEET{" "}
