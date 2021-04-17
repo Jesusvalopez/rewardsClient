@@ -52,7 +52,12 @@ const Welcome = () => {
             {" "}
             STICKS SALTY & SWEET{" "}
           </a>{" "}
-          Todos los derechos reservados
+          Todos los derechos reservados.{" "}
+          <Link to="/politica-privacidad">
+            <button className="text-blue-800 underline">
+              Política de privacidad
+            </button>
+          </Link>
         </div>
       </div>
     </div>
