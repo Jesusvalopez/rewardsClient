@@ -61,6 +61,8 @@ const Coupons = () => {
                       {" "}
                       www.sticks.cl
                     </a>
+                    . Si tu cupón es de un producto, asegurate de haberlo
+                    agregado al carrito.
                   </p>
                 </div>
               </div>
@@ -155,7 +157,8 @@ const Coupons = () => {
                     :
                   </p>
                   Ingresa el código del cupón (8 dígitos) en el campo 'cupón' al
-                  momento de pagar.
+                  momento de pagar. Si tu cupón es de un producto, asegurate de
+                  haberlo agregado al carrito.
                 </div>
               </div>
             </div>
