@@ -1,4 +1,4 @@
-import { AUTH, LOGIN_IN } from "../constants/actionsTypes";
+import { AUTH, LOGIN_IN, AUTH_ERROR } from "../constants/actionsTypes";
 import * as api from "../api";
 
 export const SignIn = (formData, history) => async (dispatch) => {
@@ -6,11 +6,12 @@ export const SignIn = (formData, history) => async (dispatch) => {
     // login
     const { data } = await api.signIn(formData);
 
-    dispatch({ type: AUTH, data });
-
-    history.push("/home");
+    history.push("/auth/redirect?token=" + data.token);
   } catch (error) {
-    console.log(error);
+    dispatch({ type: AUTH_ERROR, payload: error.response.data.message });
+    console.error(error.response.data); // ***
+    console.error(error.response.status); // ***
+    console.error(error.response.headers);
   }
 };
 
@@ -19,10 +20,13 @@ export const SignUp = (formData, history) => async (dispatch) => {
     // register
     const { data } = await api.signUp(formData);
 
-    dispatch({ type: AUTH, data });
-    history.push("/home");
+    // dispatch({ type: AUTH, data });
+    history.push("/auth/redirect?token=" + data.token);
   } catch (error) {
-    console.log(error);
+    dispatch({ type: AUTH_ERROR, payload: error.response.data.message });
+    console.error(error.response.data); // ***
+    console.error(error.response.status); // ***
+    console.error(error.response.headers);
   }
 };
 

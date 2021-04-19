@@ -9,12 +9,14 @@ import {
   FacebookSignUp,
 } from "../../actions/auth";
 import Logo from "../../images/Logo-Sticks.png";
-import { LOGIN_IN } from "../../constants/actionsTypes";
+import { LOGIN_IN, AUTH_CLEAN_ERRORS } from "../../constants/actionsTypes";
 import ReactLoading from "react-loading";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 import { IconContext } from "react-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const initialState = {
   firstName: "",
   lastName: "",
@@ -30,12 +32,20 @@ const Auth = () => {
 
   const [formData, setFormData] = useState(initialState);
   const loginIn = useSelector((state) => state.loginIn);
+  const authError = useSelector((state) => state.auth.authError);
   const history = useHistory();
   //const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   if (JSON.parse(localStorage.getItem("profile"))) {
     history.push("/home");
   }
+
+  useEffect(() => {
+    if (authError) {
+      notifyError(authError);
+    }
+    dispatch({ type: AUTH_CLEAN_ERRORS });
+  }, [authError]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,37 +65,11 @@ const Auth = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const componentClicked = (e) => {};
-  const responseFacebook = async (res) => {
-    console.log(res);
-    try {
-      dispatch({ type: LOGIN_IN, payload: true });
-      dispatch(FacebookSignUp(res, history));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const googleSuccess = async (res) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-
-    const form = { profile: result, token: token };
-
-    try {
-      dispatch({ type: LOGIN_IN, payload: true });
-      dispatch(GoogleSignUp(form, history));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const googleFailure = (error) => {
-    console.log("No se pudo loguear con google");
-    console.log(error);
-  };
+  const notifyError = (message) => toast.error(message);
 
   return (
     <div className="">
+      <ToastContainer />
       {loginIn ? (
         <div className="fixed h-full w-full flex flex-col items-center justify-center bg-opacity-50 bg-gray-700">
           <ReactLoading
@@ -117,7 +101,7 @@ const Auth = () => {
                         "https://premios-server.sticks.cl/passport/auth/google";
                       /*window.location =
                         "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app/passport/auth/google";*/
-                      /* window.location =
+                      /*   window.location =
                         "http://localhost:5000/passport/auth/google";*/
                     }}
                     className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-2xl w-full shadow-md border border-gray-100 hover:opacity-70"
@@ -142,6 +126,8 @@ const Auth = () => {
                     onClick={() => {
                       window.location =
                         "https://premios-server.sticks.cl/passport/auth/facebook";
+                      /* window.location =
+                        "http://localhost:5000/passport/auth/facebook";*/
                     }}
                     className=" text-white bg-blue-600 py-3 px-3 mt-0 rounded-2xl w-full hover:opacity-70"
                   >
@@ -165,13 +151,16 @@ const Auth = () => {
             )}
           </div>
 
-          <div className="display-none">
-            {false ? (
+          <div className="bg-white shadow-md rounded px-8 pt-3 pb-8 mt-3  flex flex-col w-full ">
+            {true ? (
               <form action="#" onSubmit={handleSubmit}>
-                <div className="flex justify-between items-center mt-3">
-                  <hr className="w-full" /> <span className="p-2 mb-1">O</span>
-                  <hr className="w-full" />
-                </div>
+                {!isSignUp && (
+                  <div className="flex justify-between items-center">
+                    <hr className="w-full" />{" "}
+                    <span className="p-2 mb-1">O</span>
+                    <hr className="w-full" />
+                  </div>
+                )}
                 {isSignUp && (
                   <div className="mb-4 grid grid-cols-2 gap-4 mt-10">
                     <div>
@@ -201,7 +190,7 @@ const Auth = () => {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
                         id="lastName"
                         type="text"
-                        placeholder="Appellido"
+                        placeholder="Apellido"
                         name="lastName"
                         onChange={handleChange}
                       />
@@ -263,14 +252,14 @@ const Auth = () => {
                   >
                     {isSignUp ? "Registrarse" : "Iniciar sesión"}
                   </button>
-                  {!isSignUp && (
+                  {/*!isSignUp && (
                     <a
                       className="my-2 md:my-0 font-bold text-sm text-blue hover:text-blue-darker"
                       href="#"
                     >
                       Olvidé mi contraseña
                     </a>
-                  )}
+                  )*/}
                 </div>
                 <div className="text-center ">
                   <a
