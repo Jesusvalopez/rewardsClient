@@ -5,9 +5,10 @@ export const SignIn = (formData, history) => async (dispatch) => {
   try {
     // login
     const { data } = await api.signIn(formData);
-
+    dispatch({ type: LOGIN_IN, payload: false });
     history.push("/auth/redirect?token=" + data.token);
   } catch (error) {
+    dispatch({ type: LOGIN_IN, payload: false });
     dispatch({ type: AUTH_ERROR, payload: error.response.data.message });
     console.error(error.response.data); // ***
     console.error(error.response.status); // ***
@@ -21,8 +22,10 @@ export const SignUp = (formData, history) => async (dispatch) => {
     const { data } = await api.signUp(formData);
 
     // dispatch({ type: AUTH, data });
+    dispatch({ type: LOGIN_IN, payload: false });
     history.push("/auth/redirect?token=" + data.token);
   } catch (error) {
+    dispatch({ type: LOGIN_IN, payload: false });
     dispatch({ type: AUTH_ERROR, payload: error.response.data.message });
     console.error(error.response.data); // ***
     console.error(error.response.status); // ***

@@ -50,6 +50,8 @@ const Auth = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    dispatch({ type: LOGIN_IN, payload: true });
+
     if (isSignUp) {
       dispatch(SignUp(formData, history));
     } else {
