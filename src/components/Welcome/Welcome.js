@@ -25,7 +25,8 @@ const Welcome = () => {
           </h1>
 
           <p className="text-white leading-normal text-base md:text-2xl mb-4 text-center md:text-left slide-in-bottom-subtitle">
-            Comparte y disfruta con tus amigos estos deliciosos premios
+            Regístrate para compartir y disfrutar con tus amigos estos
+            deliciosos premios
           </p>
           <p className="text-black leading-normal text-base md:text-2xl mb-4 text-center md:text-left slide-in-bottom-subtitle">
             ¿Probarás tu suerte?
