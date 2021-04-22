@@ -5,6 +5,7 @@ import LoginRedirect from "./components/Auth/LoginRedirect";
 import Home from "./components/Home/Home";
 import Welcome from "./components/Welcome/Welcome";
 import PrivacyPolicy from "./components/Welcome/PrivacyPolicy";
+import GoogleOAuthHomepage from "./components/Welcome/GoogleOAuthHomepage";
 import DataDeletion from "./components/Welcome/DataDeletion";
 import Coupons from "./components/Coupons/Coupons";
 import WheelFortune from "./components/WheelFortune/WheelFortune";
@@ -48,6 +49,11 @@ const App = () => {
           exact
           path="/politica-privacidad"
           component={PrivacyPolicy}
+        ></Route>
+        <Route
+          exact
+          path="/sobre-nosotros"
+          component={GoogleOAuthHomepage}
         ></Route>
         <Route exact path="/wheel-of-fortune" component={WheelFortune}></Route>
         <Route

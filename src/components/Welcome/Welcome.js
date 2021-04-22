@@ -59,6 +59,11 @@ const Welcome = () => {
               Política de privacidad
             </button>
           </Link>
+          <Link to="/sobre-nosotros">
+            <button className="text-blue-800 underline px-2">
+              Sobre esta plataforma
+            </button>
+          </Link>
         </div>
       </div>
     </div>

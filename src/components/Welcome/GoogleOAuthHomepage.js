@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "./../../images/Logo-Sticks.png";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 const PrivacyPolicy = () => {
   const history = useHistory();
   return (
@@ -8,69 +8,34 @@ const PrivacyPolicy = () => {
       <div className="w-56 pb-10" onClick={() => history.push("/")}>
         <img src={Logo} alt="" />
       </div>
-      <p className="text-center text-xl font-bold"> POLÍTICA DE PRIVACIDAD</p>
+      <p className=" text-xl font-bold mb-4">¿Para qué es esta plataforma?</p>
       <p>
-        {" "}
-        La presente Política de Privacidad establece los términos en que STICKS
-        SPA usa y protege la información que es proporcionada por sus usuarios
-        al momento de utilizar su sitio web. Esta compañía está comprometida con
-        la seguridad de los datos de sus usuarios. Cuando le pedimos llenar los
-        campos de información personal con la cual usted pueda ser identificado,
-        lo hacemos asegurando que sólo se empleará de acuerdo con los términos
-        de este documento. Sin embargo esta Política de Privacidad puede cambiar
-        con el tiempo o ser actualizada por lo que le recomendamos y enfatizamos
-        revisar continuamente esta página para asegurarse que está de acuerdo
-        con dichos cambios.
+        Es un medio para entregar premios y recompensas a los clientes de STICKS
+      </p>
+      <p className="text-xl font-bold my-4">
+        ¿Para qué es necesaria la información de los usuarios?
       </p>
       <p>
-        <p className="text-center text-lg font-bold">
-          {" "}
-          Información que es recogida
-        </p>
-        Nuestro sitio web podrá recoger información personal por ejemplo:
-        Nombre, información de contacto como su dirección de correo electrónica
-        e información demográfica. Así mismo cuando sea necesario podrá ser
-        requerida información específica para procesar algún pedido o realizar
-        una entrega o facturación.
+        La información recopilada de google son: Nombre, correo electrónico y
+        foto de perfil. Esto será usado para identificar a los usuarios y poder
+        entregarle los cupones y puntos generados asociándolos a su correo
+        electrónico.
       </p>
-      <p className="text-center text-lg font-bold">
-        {" "}
-        Uso de la información recogida{" "}
+      <p className=" text-xl font-bold my-4">
+        ¿Por qué es necesario registrarse?
       </p>
-      Nuestro sitio web emplea la información con el fin de proporcionar el
-      mejor servicio posible, particularmente para mantener un registro de
-      usuarios, de pedidos en caso que aplique, y mejorar nuestros productos y
-      servicios. Es posible que sean enviados correos electrónicos
-      periódicamente a través de nuestro sitio con ofertas especiales, nuevos
-      productos y otra información publicitaria que consideremos relevante para
-      usted o que pueda brindarle algún beneficio, estos correos electrónicos
-      serán enviados a la dirección que usted proporcione y podrán ser
-      cancelados en cualquier momento. STICKS SPA está altamente comprometido
-      para cumplir con el compromiso de mantener su información segura. Usamos
-      los sistemas más avanzados y los actualizamos constantemente para
-      asegurarnos que no exista ningún acceso no autorizado.
-      <p className="text-center text-lg font-bold">Enlaces a Terceros</p> Este
-      sitio web pudiera contener en laces a otros sitios que pudieran ser de su
-      interés. Una vez que usted de clic en estos enlaces y abandone nuestra
-      página, ya no tenemos control sobre al sitio al que es redirigido y por lo
-      tanto no somos responsables de los términos o privacidad ni de la
-      protección de sus datos en esos otros sitios terceros. Dichos sitios están
-      sujetos a sus propias políticas de privacidad por lo cual es recomendable
-      que los consulte para confirmar que usted está de acuerdo con estas.
-      <p className="text-center text-lg font-bold">
-        {" "}
-        Control de su información personal
-      </p>{" "}
-      En cualquier momento usted puede restringir la recopilación o el uso de la
-      información personal que es proporcionada a nuestro sitio web. Cada vez
-      que se le solicite rellenar un formulario, como el de alta de usuario,
-      puede marcar o desmarcar la opción de recibir información por correo
-      electrónico. En caso de que haya marcado la opción de recibir nuestro
-      boletín o publicidad usted puede cancelarla en cualquier momento. Esta
-      compañía no venderá, cederá ni distribuirá la información personal que es
-      recopilada sin su consentimiento, salvo que sea requerido por un juez con
-      un orden judicial. STICKS SPA Se reserva el derecho de cambiar los
-      términos de la presente Política de Privacidad en cualquier momento.
+      <p>
+        Esta plataforma entrega productos de STICKS de manera gratuita con solo
+        ingresar a ella, es necesario registrarse con un correo válido para
+        evitar el uso indebido de la plataforma
+      </p>
+      <p className="text-xl font-bold my-4 text-blue-500">
+        <Link to="/politica-privacidad">
+          <button href="/politica-privacidad">
+            Nuestra politica de privacidad
+          </button>
+        </Link>
+      </p>
     </div>
   );
 };
