@@ -5,6 +5,7 @@ import LoginRedirect from "./components/Auth/LoginRedirect";
 import Home from "./components/Home/Home";
 import Welcome from "./components/Welcome/Welcome";
 import PrivacyPolicy from "./components/Welcome/PrivacyPolicy";
+import Conditions from "./components/Welcome/Conditions";
 import GoogleOAuthHomepage from "./components/Welcome/GoogleOAuthHomepage";
 import DataDeletion from "./components/Welcome/DataDeletion";
 import Coupons from "./components/Coupons/Coupons";
@@ -49,6 +50,11 @@ const App = () => {
           exact
           path="/politica-privacidad"
           component={PrivacyPolicy}
+        ></Route>
+        <Route
+          exact
+          path="/terminos-y-condiciones"
+          component={Conditions}
         ></Route>
         <Route
           exact

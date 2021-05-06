@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import {
   SignIn,
   SignUp,
@@ -103,7 +103,7 @@ const Auth = () => {
                         "https://premios-server.sticks.cl/passport/auth/google";
                       /*window.location =
                         "https://jesusvalopez-jesusvalopez-rewardsserver.zeet.app/passport/auth/google";*/
-                      /*   window.location =
+                      /* window.location =
                         "http://localhost:5000/passport/auth/google";*/
                     }}
                     className="text-gray-500 bg-white py-3 px-3 mt-0 rounded-2xl w-full shadow-md border border-gray-100 hover:opacity-70"
@@ -277,6 +277,14 @@ const Auth = () => {
               </form>
             ) : null}
           </div>
+          <p className="text-center text-sm pt-2">
+            Al ingresar aceptas nuestros{" "}
+            <Link to="/terminos-y-condiciones">
+              <button className="text-blue-800 underline">
+                términos y condiciones{" "}
+              </button>
+            </Link>
+          </p>
         </div>
       </div>
     </div>
