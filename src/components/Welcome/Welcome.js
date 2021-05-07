@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import logo from "../../images/Logo-Sticks.png";
 import people from "../../images/rewards.png";
 import roulette from "../../images/ruleta web2.png";
+import instagram from "../../images/instagram.png";
+import facebook from "../../images/facebook.png";
 
 const Welcome = () => {
   return (
@@ -15,6 +17,17 @@ const Welcome = () => {
           >
             <img src={logo} alt="" className="w-52" />
           </a>
+          <div className="hidden flex-col flex-grow text-right md:block ">
+            <span className="inline-flex w-28">
+              <p className="text-xl align-middle pt-1 pr-2"></p>
+              <a href="">
+                <img className="ml-2" src={instagram} alt="instagram_logo" />
+              </a>
+              <a href="">
+                <img className="ml-5" src={facebook} alt="facebook_logo" />
+              </a>
+            </span>
+          </div>
         </div>
       </div>
 
