@@ -20,10 +20,10 @@ const Welcome = () => {
           <div className="hidden flex-col flex-grow text-right md:block ">
             <span className="inline-flex w-28">
               <p className="text-xl align-middle pt-1 pr-2"></p>
-              <a href="">
+              <a href="https://instagram.com/stickschile">
                 <img className="ml-2" src={instagram} alt="instagram_logo" />
               </a>
-              <a href="">
+              <a href="https://www.facebook.com/SticksChile">
                 <img className="ml-5" src={facebook} alt="facebook_logo" />
               </a>
             </span>
