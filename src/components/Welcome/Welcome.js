@@ -21,10 +21,10 @@ const Welcome = () => {
             <span className="inline-flex w-28">
               <p className="text-xl align-middle pt-1 pr-2"></p>
               <a href="https://instagram.com/stickschile">
-                <img className="ml-2" src={instagram} alt="instagram_logo" />
+                <img className="ml-2" src={instagram} alt="" />
               </a>
               <a href="https://www.facebook.com/SticksChile">
-                <img className="ml-5" src={facebook} alt="facebook_logo" />
+                <img className="ml-5" src={facebook} alt="" />
               </a>
             </span>
           </div>
