@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/Logo-Sticks.png";
 import people from "../../images/rewards.png";
-import roulette from "../../images/ruleta web2.png";
+import roulette from "../../images/ruleta web3.png";
 import instagram from "../../images/instagram.png";
 import facebook from "../../images/facebook.png";
 
